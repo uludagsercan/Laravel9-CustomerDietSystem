@@ -10,7 +10,7 @@
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                     <!-- Dark Logo icon -->
                     <img
-                        src="assets/images/logo-icon.png"
+                        src="/assets/images/logo-icon.png"
                         alt="homepage"
                         class="light-logo"
                         width="25"
@@ -21,7 +21,7 @@
                 <span class="logo-text ms-2">
                 <!-- dark Logo text -->
                 <img
-                    src="assets/images/logo-text.png"
+                    src="/assets/images/logo-text.png"
                     alt="homepage"
                     class="light-logo"
                 />
@@ -278,7 +278,7 @@
                         aria-expanded="false"
                     >
                         <img
-                            src="../assets/images/users/1.jpg"
+                            src="/assets/images/users/1.jpg"
                             alt="user"
                             class="rounded-circle"
                             width="31"
