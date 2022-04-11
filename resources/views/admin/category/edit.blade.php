@@ -77,7 +77,8 @@
                                 <label class="col-sm-3 text-end control-label col-form-label">Status</label>
 
                                 <div class="col-md-9">
-                                    <select class="form-select" aria-label="Default select example">
+                                    <select class="form-select" name="status"
+                                            aria-label="Default select example">
                                         <option selected>Selected item: {{$data->status ? 'True':'False'}}</option>
 
                                         <option value="true">True</option>
