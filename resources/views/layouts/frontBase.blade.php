@@ -52,7 +52,7 @@
 @section('sidebar')
 @include('home.sidebar')
 @show
-@include('home.slider')
+@include('home.slider    ')
 @yield('content')
 
 

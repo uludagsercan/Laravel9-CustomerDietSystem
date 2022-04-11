@@ -49,15 +49,35 @@
         @include('admin.sidebar')
     @show
 <div class="page-wrapper">
-
-
+    <div class="page-breadcrumb">
+        <div class="row">
+            <div class="col-12 d-flex no-block align-items-center">
+                <h4 class="page-title">@yield('pageTitle')</h4>
+                <div class="ms-auto text-end">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="@yield('pageLink')">@yield('pageName')</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">
+                                @yield('currentPage')
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+<div class="content">
     @yield('content')
-
-
-
-    @include('admin.footer')
 </div>
+
+
+
+
+
 </div>
+
+</div>
+@include('admin.footer')
 
 
 <script src="/assets/libs/jquery/dist/jquery.min.js"></script>

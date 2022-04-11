@@ -17,7 +17,7 @@ use \App\Http\Controllers\AdminPanel\CategoryController;
 */
 
 //Route::get('/', function () {
-  //  return view('welcome');
+//  return view('welcome');
 //});
 
 Route::get('/',[HomeController::class,'index'])->name('home');
@@ -26,14 +26,25 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
-//-----------------Admin Panel-------------------
 
-Route::get('/admin',[AdminController::class,'index']);
+Route::prefix('/admin')->name('admin.')->controller(AdminController::class)->group(function (){
+    //-----------------Admin Panel-------------------
 
-//-----------------Category List-------------------
-Route::get('/admin/category',[CategoryController::class,'index'])->name('admin_category');
-Route::get('/admin/category/create',[CategoryController::class,'create'])->name('admin_category_create');
-Route::post('/admin/category/store',[CategoryController::class,'store'])->name('admin_category_store');
-Route::post('/admin/category/store',[CategoryController::class,'store'])->name('admin_category_store');
-Route::get('/admin/category/edit/{id}',[CategoryController::class,'edit'])->name('admin_category_edit');
-Route::post('/admin/category/update/{id}',[CategoryController::class,'update'])->name('admin_category_edit');
+    Route::get('/','index')->name('index');
+
+    Route::prefix('/category')->name('category.')->controller(CategoryController::class)->group(function (){
+        //-----------------Category Route-------------------
+        Route::get('/','index')->name('index');
+        Route::get('/create','create')->name('create');
+//Route::post('/admin/category/store',[CategoryController::class,'store'])->name('admin_category_store');
+        Route::post('/store','store')->name('store');
+        Route::get('/edit/{id}','edit')->name('edit');
+        Route::post('/update/{id}','update')->name('update');
+        Route::get('/show/{id}','show')->name('show');
+        Route::get('/destroy/{id}','destroy')->name('destroy');
+
+    });
+
+});
+
+
