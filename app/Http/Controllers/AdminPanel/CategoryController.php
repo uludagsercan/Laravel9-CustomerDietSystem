@@ -46,11 +46,14 @@ class CategoryController extends Controller
         $category->parent_id = 0;
         $category->title=$request->title;
         $category->description = $request->description;
-        $category->image= $request->fimage;
+        if ($request->file('fimage')){
+            $category->image = $request->file('fimage')->store('images');
+        }
+
         $category->keywords = $request->keyword;
         $category->status = (boolean)$request->status;
         $category->save();
-        return redirect('admin.category');
+        return redirect('admin/category');
 
     }
 

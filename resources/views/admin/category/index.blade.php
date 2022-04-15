@@ -43,7 +43,8 @@
                                     <td>{{$item->id}}</td>
                                     <td class="text-center">{{$item->title}}</td>
                                     <td>{{$item->description}}</td>
-                                    <td class="text-end">{{$item->image}}</td>
+                                    <td class="text-end">
+                                        <img src="{{ $item->image ? \Illuminate\Support\Facades\Storage::url($item->image):''}}" style="width: 25px"></td>
                                     <td class="text-end">{{$item->status}}</td>
                                     <td class="text-end">{{$item->parent_id}}</td>
                                     <td class="text-end">{{$item->keywords}}</td>

@@ -33,6 +33,7 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 </head>
 <body>
 <div
@@ -102,5 +103,6 @@
 <script src="/assets/libs/flot/jquery.flot.crosshair.js"></script>
 <script src="/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
 <script src="/dist/js/pages/chart/chart-page-init.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 </body>
 </html>
