@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AdminPanel;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -49,7 +50,6 @@ class CategoryController extends Controller
         if ($request->file('fimage')){
             $category->image = $request->file('fimage')->store('images');
         }
-
         $category->keywords = $request->keyword;
         $category->status = (boolean)$request->status;
         $category->save();
@@ -98,12 +98,14 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category,$id)
     {
         //
-
         $category = Category::find($id);
         $category->parent_id = 0;
         $category->title=$request->title;
         $category->description = $request->description;
-        $category->image= $request->fimage;
+     
+        if ($request->file('fimage')){
+            $category->image = $request->file('fimage')->store('images');
+        }
         $category->keywords = $request->keyword;
         $category->status = (boolean)$request->status;
         $category->save();
@@ -116,8 +118,13 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Category $category,$id)
     {
         //
+        $category = Category::find($id);
+        Storage::delete($category->image);
+        $category->delete();
+
+        return redirect('admin/category');
     }
 }

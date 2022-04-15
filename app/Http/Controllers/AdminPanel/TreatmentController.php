@@ -5,6 +5,7 @@ namespace App\Http\Controllers\AdminPanel;
 use App\Http\Controllers\Controller;
 use App\Models\Treatment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TreatmentController extends Controller
 {
@@ -124,9 +125,9 @@ class TreatmentController extends Controller
     public function destroy(Treatment $treatment,$id)
     {
         //
-        Treatment::destroy($id);
-
+        $treatment = Treatment::find($id);
+        Storage::delete($treatment->image);
+        $treatment->delete();
         return redirect('admin/treatment');
-
     }
 }
