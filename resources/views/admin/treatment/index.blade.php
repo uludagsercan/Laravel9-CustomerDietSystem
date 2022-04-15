@@ -52,7 +52,7 @@
                                             <td class="text-end">{{$item->updated_at}}</td>
                                             <td class="text-end"><a class="btn btn-warning btn-sm" href="{{route("admin.treatment.edit",['id'=> $item->id])}}">Edit</a></td>
                                             <td class="text-end"><a class="btn btn-danger btn-sm" href="{{route("admin.category.destroy",['id'=> $item->id])}}">Delete</a></td>
-                                            <td class="text-end"><a class="btn btn-success btn-sm" href="{{route("admin.category.show",['id'=> $item->id])}}">Show</a></td>
+                                            <td class="text-end"><a class="btn btn-success btn-sm" href="{{route("admin.treatment.show",['id'=> $item->id])}}">Show</a></td>
                                         </tr>
                                     @endforeach
                                     </tbody>

@@ -64,9 +64,14 @@ class TreatmentController extends Controller
      * @param  \App\Models\Treatment  $treatment
      * @return \Illuminate\Http\Response
      */
-    public function show(Treatment $treatment)
+    public function show(Treatment $treatment,$id)
     {
         //
+        $treatment = Treatment::find($id);
+
+        return view('admin.treatment.show',[
+            'data'=> $treatment
+        ]);
     }
 
     /**
@@ -91,9 +96,21 @@ class TreatmentController extends Controller
      * @param  \App\Models\Treatment  $treatment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Treatment $treatment)
+    public function update(Request $request, Treatment $treatment,$id)
     {
         //
+        $treatment= Treatment::find($id);
+        $treatment->title = $request->title;
+        $treatment->description = $request->description;
+        $treatment->keywords = $request->keyword;
+        $treatment->detail = $request->detail;
+        $treatment->image = $request->fimage;
+        $treatment->price = $request->price;
+        $treatment->category_id = 2;
+        $treatment->user_id=0;
+        $treatment->status = (boolean)$request->status;
+        $treatment->save();
+        return redirect('admin/treatment');
     }
 
     /**
