@@ -47,7 +47,9 @@ class TreatmentController extends Controller
         $treatment->description = $request->description;
         $treatment->keywords = $request->keyword;
         $treatment->detail = $request->detail;
-        $treatment->image = $request->fimage;
+        if($request->file('fimage')){
+            $treatment->image = $request->file('fimage')->store('images');
+        }
         $treatment->price = $request->price;
         $treatment->category_id = 2;
         $treatment->user_id=0;

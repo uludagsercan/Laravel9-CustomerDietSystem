@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-body printableArea">
-                    <h3><b></b> <span class="pull-right">Category List</span></h3>
+                    <h3><b></b> <span class="pull-right">Treatment List</span></h3>
                     <hr />
                     <div class="row">
 

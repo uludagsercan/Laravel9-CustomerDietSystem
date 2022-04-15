@@ -8,7 +8,7 @@
         <!-- ============================================================== -->
         <!-- Start Page Content -->
         <!-- ============================================================== -->
-        <form method="post" action="/admin/treatment/store">
+        <form method="post" action="/admin/treatment/store" enctype="multipart/form-data">
             @csrf
             <div class="col-md-12">
                 <div class="card">

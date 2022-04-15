@@ -7,7 +7,7 @@
         <!-- ============================================================== -->
         <!-- Start Page Content -->
         <!-- ============================================================== -->
-        <form method="post" action="/admin/category/update/{{$data->id}}">
+        <form method="post" action="/admin/category/update/{{$data->id}}" enctype="multipart/form-data">
             @csrf
             <div class="col-md-12">
                 <div class="card">
