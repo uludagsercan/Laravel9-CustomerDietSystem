@@ -105,7 +105,7 @@ class TreatmentController extends Controller
         $treatment->keywords = $request->keyword;
         $treatment->detail = $request->detail;
         $treatment->image = $request->fimage;
-        $treatment->price = $request->price;
+
         $treatment->category_id = 2;
         $treatment->user_id=0;
         $treatment->status = (boolean)$request->status;
@@ -119,8 +119,12 @@ class TreatmentController extends Controller
      * @param  \App\Models\Treatment  $treatment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Treatment $treatment)
+    public function destroy(Treatment $treatment,$id)
     {
         //
+        Treatment::destroy($id);
+
+        return redirect('admin/treatment');
+
     }
 }
