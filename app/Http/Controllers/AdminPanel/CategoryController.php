@@ -9,6 +9,20 @@ use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
+
+    protected $appends=[
+      'getParentsTree'
+    ];
+
+    public static function getParentsTree($category, $title){
+
+        if ($category->parent_id==0){
+            return $title;
+        }
+        $parent = Category::find($category->parent_id);
+        $title = $parent->title.'>'.$title;
+        return CategoryController::getParentsTree($parent,$title);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -31,7 +45,11 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        return view('admin.category.create');
+        $category = Category::all();
+
+        return view('admin.category.create',[
+            'data'=>$category
+        ]);
     }
 
     /**
@@ -50,7 +68,7 @@ class CategoryController extends Controller
         if ($request->file('fimage')){
             $category->image = $request->file('fimage')->store('images');
         }
-        $category->keywords = $request->keyword;
+        $category->keywords = $request->keywords;
         $category->status = (boolean)$request->status;
         $category->save();
         return redirect('admin/category');
@@ -66,10 +84,8 @@ class CategoryController extends Controller
     public function show(Category $category,$id)
     {
         //
-        $category = Category::find($id);
-        return view('admin.category.show',[
-            'data'=> $category
-        ]);
+
+        return view('admin.category.show');
 
     }
 
@@ -102,11 +118,10 @@ class CategoryController extends Controller
         $category->parent_id = 0;
         $category->title=$request->title;
         $category->description = $request->description;
-     
         if ($request->file('fimage')){
             $category->image = $request->file('fimage')->store('images');
         }
-        $category->keywords = $request->keyword;
+        $category->keywords = $request->keywords;
         $category->status = (boolean)$request->status;
         $category->save();
         return redirect('admin/category');
@@ -124,7 +139,6 @@ class CategoryController extends Controller
         $category = Category::find($id);
         Storage::delete($category->image);
         $category->delete();
-
         return redirect('admin/category');
     }
 }

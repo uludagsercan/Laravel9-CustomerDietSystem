@@ -1,144 +1,73 @@
 @extends('layouts.adminBase')
-@section('title',"Create Category")
+
+@section('title','Add Category')
 
 @section('content')
+    <form action="{{route('admin.category.update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
+        @csrf
+        <div class="row">
+            <div class="card-header">
+                <h5>Add Category</h5>
+            </div>
 
-    <div class="container-fluid">
-        <!-- ============================================================== -->
-        <!-- Start Page Content -->
-        <!-- ============================================================== -->
-        <form method="post" action="/admin/category/update/{{$data->id}}" enctype="multipart/form-data">
-            @csrf
-            <div class="col-md-12">
+            <div class="card-body">
+                <div class="mb-3">
+                    <label class="form-label">Title</label>
+                    <input type="text" class="form-control" name="title" value="{{$data->title}}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Description</label>
+                    <input type="text" class="form-control" name="description" value="{{$data->description}}">
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Keyword</label>
+                    <input type="text" class="form-control" name="keywords" value="{{$data->keywords}}">
+                </div>
+
+        <div class="mb-3">
+            <label class="form-label">Image</label>
+        </div>
                 <div class="card">
-                    <form class="form-horizontal">
-                        <div class="card-body">
-                            <h4 class="card-title">Update Category</h4>
-                            <div class="form-group row">
-                                <label
-                                    for="categoryId"
-                                    class="col-sm-3 text-end control-label col-form-label"
-                                >Id</label>
-                                <div class="col-sm-9">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="categoryId"
-                                        value="{{$data->id}}"
-                                        name="id"
-                                        disabled
-                                    />
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label
-                                    for="fname"
-                                    class="col-sm-3 text-end control-label col-form-label"
-                                >Title</label
-                                >
-                                <div class="col-sm-9">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="fname"
-                                        value="{{$data->title}}"
-                                        name="title"
-                                    />
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label
-                                    for="cono1"
-                                    class="col-sm-3 text-end control-label col-form-label"
-                                >Description</label
-                                >
-                                <div class="col-sm-9">
-                                    <textarea class="form-control" name="description" >{{$data->description}}</textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label
-                                    for="lname"
-                                    class="col-sm-3 text-end control-label col-form-label"
-                                >Keywords</label
-                                >
-                                <div class="col-sm-9">
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="lname"
-                                        value="{{$data->keywords}}"
-                                        name="keyword"
-                                    />
-                                </div>
-                            </div>
+                    <div class="card-body">
+                        <div class="row align-items-center">
 
-                            <div class="form-group row">
-                                <label class="col-sm-3 text-end control-label col-form-label">Status</label>
-
-                                <div class="col-md-9">
-                                    <select class="form-select" name="status"
-                                            aria-label="Default select example">
-                                        <option selected>Selected item: {{$data->status ? 'True':'False'}}</option>
-
-                                        <option value="true">True</option>
-                                        <option value="false">False</option>
-
-                                    </select>
+                            <div class="col">
 
 
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-sm-3 text-end control-label col-form-label">File Upload</label>
-                                <div class="col-md-9">
-                                    <div class="custom-file">
-                                        <input
-                                            type="file"
-                                            class="custom-file-input"
-                                            id="validatedCustomFile"
-                                            name="fimage";
-                                            required
-                                            value="{{$data->image}}"
-                                        />
-                                        <label
-                                            class="custom-file-label"
-                                            for="validatedCustomFile"
-                                        >Choose file...</label
-                                        >
-                                        <div class="invalid-feedback">
-                                            Example invalid custom file feedback
+                                <div class="mt-3">
+                                    <div class="row g-2">
+
+                                        <div class="col">
+
+                                            <input type="file" class="form-control" name="fimage" value="{{$data->image}}">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
-                        </div>
-
-                        <div class="border-top">
-                            <div class="card-body">
-                                <button type="submit" class="btn btn-primary">
-                                    Save
-                                </button>
+                            <div class="col-3 text-end">
+                                <img src="{{\Illuminate\Support\Facades\Storage::url($data->image)}}" style="width: 120px" alt="Food Deliver UI dashboards" class="rounded">
                             </div>
                         </div>
-                    </form>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="form-label">Select</div>
+                    <select class="form-select">
+                        <option value="{{$data->image}}">Selected Status: {{$data->status ? 'True':'False'}}</option>
+                        <option value="0">True</option>
+                        <option value="1">False</option>
+
+                    </select>
+                </div>
+                <div class="text-end py-3">
+                    <button class="btn btn-success">Update</button>
                 </div>
 
             </div>
-        </form>
 
 
-        <!-- ============================================================== -->
-        <!-- End PAge Content -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Right sidebar -->
-        <!-- ============================================================== -->
-        <!-- .right-sidebar -->
-        <!-- ============================================================== -->
-        <!-- End Right sidebar -->
-        <!-- ============================================================== -->
-    </div>
+
+        </div>
+    </form>
 @endsection

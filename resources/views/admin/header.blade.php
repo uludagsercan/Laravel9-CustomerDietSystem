@@ -1,325 +1,139 @@
-<header class="topbar" data-navbarbg="skin5">
-    <nav class="navbar top-navbar navbar-expand-md navbar-dark">
-        <div class="navbar-header" data-logobg="skin5">
-            <!-- ============================================================== -->
-            <!-- Logo -->
-            <!-- ============================================================== -->
-            <a class="navbar-brand" href="index.html">
-                <!-- Logo icon -->
-                <b class="logo-icon ps-2">
-                    <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                    <!-- Dark Logo icon -->
-                    <img
-                        src="/assets/images/logo-icon.png"
-                        alt="homepage"
-                        class="light-logo"
-                        width="25"
-                    />
-                </b>
-                <!--End Logo icon -->
-                <!-- Logo text -->
-                <span class="logo-text ms-2">
-                <!-- dark Logo text -->
-                <img
-                    src="/assets/images/logo-text.png"
-                    alt="homepage"
-                    class="light-logo"
-                />
-              </span>
-                <!-- Logo icon -->
-                <!-- <b class="logo-icon"> -->
-                <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                <!-- Dark Logo icon -->
-                <!-- <img src="../assets/images/logo-text.png" alt="homepage" class="light-logo" /> -->
-
-                <!-- </b> -->
-                <!--End Logo icon -->
+<header class="navbar navbar-expand-md navbar-light d-print-none">
+    <div class="container-xl">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
+            <a href=".">
+                <img src="{{asset('assets')}}/admin/static/logo.svg" width="110" height="32" alt="Tabler" class="navbar-brand-image">
             </a>
-            <!-- ============================================================== -->
-            <!-- End Logo -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Toggle which is visible on mobile only -->
-            <!-- ============================================================== -->
-            <a
-                class="nav-toggler waves-effect waves-light d-block d-md-none"
-                href="javascript:void(0)"
-            ><i class="ti-menu ti-close"></i
-                ></a>
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Logo -->
-        <!-- ============================================================== -->
-        <div
-            class="navbar-collapse collapse"
-            id="navbarSupportedContent"
-            data-navbarbg="skin5"
-        >
-            <!-- ============================================================== -->
-            <!-- toggle and nav items -->
-            <!-- ============================================================== -->
-            <ul class="navbar-nav float-start me-auto">
-                <li class="nav-item d-none d-lg-block">
-                    <a
-                        class="nav-link sidebartoggler waves-effect waves-light"
-                        href="javascript:void(0)"
-                        data-sidebartype="mini-sidebar"
-                    ><i class="mdi mdi-menu font-24"></i
-                        ></a>
-                </li>
-                <!-- ============================================================== -->
-                <!-- create new -->
-                <!-- ============================================================== -->
-                <li class="nav-item dropdown">
-                    <a
-                        class="nav-link dropdown-toggle"
-                        href="#"
-                        id="navbarDropdown"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                    >
-                  <span class="d-none d-md-block"
-                  >Create New <i class="fa fa-angle-down"></i
-                      ></span>
-                        <span class="d-block d-md-none"
-                        ><i class="fa fa-plus"></i
-                            ></span>
+        </h1>
+        <div class="navbar-nav flex-row order-md-last">
+            <div class="nav-item d-none d-md-flex me-3">
+                <div class="btn-list">
+                    <a href="https://github.com/tabler/tabler" class="btn" target="_blank" rel="noreferrer">
+                        <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" /></svg>
+                        Source code
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- ============================================================== -->
-                <!-- Search -->
-                <!-- ============================================================== -->
-                <li class="nav-item search-box">
-                    <a
-                        class="nav-link waves-effect waves-dark"
-                        href="javascript:void(0)"
-                    ><i class="mdi mdi-magnify fs-4"></i
-                        ></a>
-                    <form class="app-search position-absolute">
-                        <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Search &amp; enter"
-                        />
-                        <a class="srh-btn"><i class="mdi mdi-window-close"></i></a>
-                    </form>
-                </li>
-            </ul>
-            <!-- ============================================================== -->
-            <!-- Right side toggle and nav items -->
-            <!-- ============================================================== -->
-            <ul class="navbar-nav float-end">
-                <!-- ============================================================== -->
-                <!-- Comment -->
-                <!-- ============================================================== -->
-                <li class="nav-item dropdown">
-                    <a
-                        class="nav-link dropdown-toggle"
-                        href="#"
-                        id="navbarDropdown"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                    >
-                        <i class="mdi mdi-bell font-24"></i>
+                    <a href="https://github.com/sponsors/codecalm" class="btn" target="_blank" rel="noreferrer">
+                        <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon text-pink" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" /></svg>
+                        Sponsor
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </li>
-                    </ul>
-                </li>
-                <!-- ============================================================== -->
-                <!-- End Comment -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Messages -->
-                <!-- ============================================================== -->
-                <li class="nav-item dropdown">
-                    <a
-                        class="nav-link dropdown-toggle waves-effect waves-dark"
-                        href="#"
-                        id="2"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                    >
-                        <i class="font-24 mdi mdi-comment-processing"></i>
+                </div>
+            </div>
+            <div class="d-none d-md-flex">
+                <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode" data-bs-toggle="tooltip" data-bs-placement="bottom">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/moon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" /></svg>
+                </a>
+                <a href="?theme=light" class="nav-link px-0 hide-theme-light" title="Enable light mode" data-bs-toggle="tooltip" data-bs-placement="bottom">
+                    <!-- Download SVG icon from http://tabler-icons.io/i/sun -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="4" /><path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" /></svg>
+                </a>
+                <div class="nav-item dropdown d-none d-md-flex me-3">
+                    <a href="#" class="nav-link px-0" data-bs-toggle="dropdown" tabindex="-1" aria-label="Show notifications">
+                        <!-- Download SVG icon from http://tabler-icons.io/i/bell -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M10 5a2 2 0 0 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" /><path d="M9 17v1a3 3 0 0 0 6 0v-1" /></svg>
+                        <span class="badge bg-red"></span>
                     </a>
-                    <ul
-                        class="
-                    dropdown-menu dropdown-menu-end
-                    mailbox
-                    animated
-                    bounceInDown
-                  "
-                        aria-labelledby="2"
-                    >
-                        <ul class="list-style-none">
-                            <li>
-                                <div class="">
-                                    <!-- Message -->
-                                    <a href="javascript:void(0)" class="link border-top">
-                                        <div class="d-flex no-block align-items-center p-10">
-                            <span
-                                class="
-                                btn btn-success btn-circle
-                                d-flex
-                                align-items-center
-                                justify-content-center
-                              "
-                            ><i class="mdi mdi-calendar text-white fs-4"></i
-                                ></span>
-                                            <div class="ms-2">
-                                                <h5 class="mb-0">Event today</h5>
-                                                <span class="mail-desc"
-                                                >Just a reminder that event</span
-                                                >
+                    <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-end dropdown-menu-card">
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Last updates</h3>
+                            </div>
+                            <div class="list-group list-group-flush list-group-hoverable">
+                                <div class="list-group-item">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto"><span class="status-dot status-dot-animated bg-red d-block"></span></div>
+                                        <div class="col text-truncate">
+                                            <a href="#" class="text-body d-block">Example 1</a>
+                                            <div class="d-block text-muted text-truncate mt-n1">
+                                                Change deprecated html tags to text decoration classes (#29604)
                                             </div>
                                         </div>
-                                    </a>
-                                    <!-- Message -->
-                                    <a href="javascript:void(0)" class="link border-top">
-                                        <div class="d-flex no-block align-items-center p-10">
-                            <span
-                                class="
-                                btn btn-info btn-circle
-                                d-flex
-                                align-items-center
-                                justify-content-center
-                              "
-                            ><i class="mdi mdi-settings fs-4"></i
-                                ></span>
-                                            <div class="ms-2">
-                                                <h5 class="mb-0">Settings</h5>
-                                                <span class="mail-desc"
-                                                >You can customize this template</span
-                                                >
-                                            </div>
+                                        <div class="col-auto">
+                                            <a href="#" class="list-group-item-actions">
+                                                <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+                                            </a>
                                         </div>
-                                    </a>
-                                    <!-- Message -->
-                                    <a href="javascript:void(0)" class="link border-top">
-                                        <div class="d-flex no-block align-items-center p-10">
-                            <span
-                                class="
-                                btn btn-primary btn-circle
-                                d-flex
-                                align-items-center
-                                justify-content-center
-                              "
-                            ><i class="mdi mdi-account fs-4"></i
-                                ></span>
-                                            <div class="ms-2">
-                                                <h5 class="mb-0">Pavan kumar</h5>
-                                                <span class="mail-desc"
-                                                >Just see the my admin!</span
-                                                >
-                                            </div>
-                                        </div>
-                                    </a>
-                                    <!-- Message -->
-                                    <a href="javascript:void(0)" class="link border-top">
-                                        <div class="d-flex no-block align-items-center p-10">
-                            <span
-                                class="
-                                btn btn-danger btn-circle
-                                d-flex
-                                align-items-center
-                                justify-content-center
-                              "
-                            ><i class="mdi mdi-link fs-4"></i
-                                ></span>
-                                            <div class="ms-2">
-                                                <h5 class="mb-0">Luanch Admin</h5>
-                                                <span class="mail-desc"
-                                                >Just see the my new admin!</span
-                                                >
-                                            </div>
-                                        </div>
-                                    </a>
+                                    </div>
                                 </div>
-                            </li>
-                        </ul>
-                    </ul>
-                </li>
-                <!-- ============================================================== -->
-                <!-- End Messages -->
-                <!-- ============================================================== -->
-
-                <!-- ============================================================== -->
-                <!-- User profile and search -->
-                <!-- ============================================================== -->
-                <li class="nav-item dropdown">
-                    <a
-                        class="
-                    nav-link
-                    dropdown-toggle
-                    text-muted
-                    waves-effect waves-dark
-                    pro-pic
-                  "
-                        href="#"
-                        id="navbarDropdown"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                    >
-                        <img
-                            src="/assets/images/users/1.jpg"
-                            alt="user"
-                            class="rounded-circle"
-                            width="31"
-                        />
-                    </a>
-                    <ul
-                        class="dropdown-menu dropdown-menu-end user-dd animated"
-                        aria-labelledby="navbarDropdown"
-                    >
-                        <a class="dropdown-item" href="javascript:void(0)"
-                        ><i class="mdi mdi-account me-1 ms-1"></i> My Profile</a
-                        >
-                        <a class="dropdown-item" href="javascript:void(0)"
-                        ><i class="mdi mdi-wallet me-1 ms-1"></i> My Balance</a
-                        >
-                        <a class="dropdown-item" href="javascript:void(0)"
-                        ><i class="mdi mdi-email me-1 ms-1"></i> Inbox</a
-                        >
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="javascript:void(0)"
-                        ><i class="mdi mdi-settings me-1 ms-1"></i> Account
-                            Setting</a
-                        >
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="javascript:void(0)"
-                        ><i class="fa fa-power-off me-1 ms-1"></i> Logout</a
-                        >
-                        <div class="dropdown-divider"></div>
-                        <div class="ps-4 p-10">
-                            <a
-                                href="javascript:void(0)"
-                                class="btn btn-sm btn-success btn-rounded text-white"
-                            >View Profile</a
-                            >
+                                <div class="list-group-item">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto"><span class="status-dot d-block"></span></div>
+                                        <div class="col text-truncate">
+                                            <a href="#" class="text-body d-block">Example 2</a>
+                                            <div class="d-block text-muted text-truncate mt-n1">
+                                                justify-content:between ⇒ justify-content:space-between (#29734)
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <a href="#" class="list-group-item-actions show">
+                                                <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon text-yellow" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto"><span class="status-dot d-block"></span></div>
+                                        <div class="col text-truncate">
+                                            <a href="#" class="text-body d-block">Example 3</a>
+                                            <div class="d-block text-muted text-truncate mt-n1">
+                                                Update change-version.js (#29736)
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <a href="#" class="list-group-item-actions">
+                                                <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="list-group-item">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto"><span class="status-dot status-dot-animated bg-green d-block"></span></div>
+                                        <div class="col text-truncate">
+                                            <a href="#" class="text-body d-block">Example 4</a>
+                                            <div class="d-block text-muted text-truncate mt-n1">
+                                                Regenerate package-lock.json (#29730)
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <a href="#" class="list-group-item-actions">
+                                                <!-- Download SVG icon from http://tabler-icons.io/i/star -->
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="icon text-muted" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 17.75l-6.172 3.245l1.179 -6.873l-5 -4.867l6.9 -1l3.086 -6.253l3.086 6.253l6.9 1l-5 4.867l1.179 6.873z" /></svg>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </ul>
-                </li>
-                <!-- ============================================================== -->
-                <!-- User profile and search -->
-                <!-- ============================================================== -->
-            </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown" aria-label="Open user menu">
+                    <span class="avatar avatar-sm" style="background-image: url({{asset('assets')}}/admin/static/avatars/000m.jpg)"></span>
+                    <div class="d-none d-xl-block ps-2">
+                        <div>Paweł Kuna</div>
+                        <div class="mt-1 small text-muted">UI Designer</div>
+                    </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <a href="#" class="dropdown-item">Set status</a>
+                    <a href="#" class="dropdown-item">Profile & account</a>
+                    <a href="#" class="dropdown-item">Feedback</a>
+                    <div class="dropdown-divider"></div>
+                    <a href="#" class="dropdown-item">Settings</a>
+                    <a href="#" class="dropdown-item">Logout</a>
+                </div>
+            </div>
         </div>
-    </nav>
+    </div>
 </header>
