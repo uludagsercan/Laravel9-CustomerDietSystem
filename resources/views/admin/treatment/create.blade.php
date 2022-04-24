@@ -32,6 +32,14 @@
                     <label class="form-label">Price</label>
                     <input type="price" class="form-control" name="price">
                 </div>
+                <div class="col-md-12">
+                    <label class="form-label">Tax</label>
+                    <input type="price" class="form-control" name="tax">
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label">Discount</label>
+                    <input type="price" class="form-control" name="discount">
+                </div>
 
                 <div class="col-md-12">
                     <label class="form-label">Image</label>

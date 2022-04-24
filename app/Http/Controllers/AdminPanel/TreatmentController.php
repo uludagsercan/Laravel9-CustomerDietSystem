@@ -55,6 +55,8 @@ class TreatmentController extends Controller
         $treatment->category_id = 2;
         $treatment->user_id=0;
         $treatment->status = (boolean)$request->status;
+        $treatment->discount = $request->discount;
+        $treatment->tax = $request->tax;
         $treatment->save();
         return redirect('admin/treatment');
 
@@ -112,6 +114,8 @@ class TreatmentController extends Controller
         $treatment->category_id = 2;
         $treatment->user_id=0;
         $treatment->status = (boolean)$request->status;
+        $treatment->discount = $request->discount;
+        $treatment->tax = $request->tax;
         $treatment->save();
         return redirect('admin/treatment');
     }

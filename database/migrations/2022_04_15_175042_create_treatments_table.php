@@ -18,12 +18,14 @@ return new class extends Migration
             $table->string('title');
             $table->string('keywords');
             $table->string('description');
-            $table->string('detail');
-            $table->string('image');
+            $table->string('detail')->nullable();
+            $table->string('image')->nullable();
             $table->foreignId('category_id');
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->nullable();
             $table->boolean('status');
-            $table->integer('price');
+            $table->integer('price')->nullable();
+            $table->integer('tax')->nullable();
+            $table->integer('discount')->nullable();
             $table->timestamps();
         });
     }

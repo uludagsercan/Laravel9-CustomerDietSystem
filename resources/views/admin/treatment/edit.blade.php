@@ -8,7 +8,7 @@
         @csrf
         <div class="row">
             <div class="card-header">
-                <h5>Update Category</h5>
+                <h5>Update Treatment</h5>
             </div>
 
             <div class="card-body">
@@ -34,6 +34,14 @@
                     <input type="number" class="form-control" name="price" value="{{$data->price}}">
                 </div>
                 <div class="mb-3">
+                    <label class="form-label">Tax</label>
+                    <input type="number" class="form-control" name="price" value="{{$data->tax}}">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Discount</label>
+                    <input type="number" class="form-control" name="price" value="{{$data->discount}}">
+                </div>
+                <div class="mb-3">
                     <label class="form-label">Image</label>
                 </div>
                 <div class="card">
@@ -54,7 +62,7 @@
                                 </div>
                             </div>
                             <div class="col-3 text-end">
-                                <img src="{{\Illuminate\Support\Facades\Storage::url($data->image)}}" style="width: 120px" alt="Food Deliver UI dashboards" class="rounded">
+                                <img src="{{\Illuminate\Support\Facades\Storage::url($data->image)}}" style="width: 120px" class="rounded">
                             </div>
                         </div>
                     </div>

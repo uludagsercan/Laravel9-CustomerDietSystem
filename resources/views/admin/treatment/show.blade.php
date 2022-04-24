@@ -26,6 +26,14 @@
                     <a href="#tabs-status" class="nav-link" data-bs-toggle="tab"><!-- Download SVG icon from http://tabler-icons.io/i/user -->
                         Status</a>
                 </li>
+                <li class="nav-item">
+                    <a href="#tabs-tax" class="nav-link" data-bs-toggle="tab"><!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                        Tax</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#tabs-discount" class="nav-link" data-bs-toggle="tab"><!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                        Discount</a>
+                </li>
             </ul>
             <div class="card-body">
                 <div class="tab-content">
@@ -52,6 +60,16 @@
                     <div class="tab-pane" id="tabs-status">
                         <div>
                             {{$data->status ? 'True':'False'}}
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tabs-tax">
+                        <div>
+                            {{$data->tax}}
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tabs-discount">
+                        <div>
+                            {{$data->discount}}
                         </div>
                     </div>
                 </div>
