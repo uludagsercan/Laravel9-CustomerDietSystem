@@ -1,5 +1,7 @@
 @extends('layouts.adminBase')
-@section('title','Show Category')
+
+@section('title','Show Treatment')
+
 @section('content')
     <div class="col-md-12">
         <div class="card">
@@ -10,7 +12,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#tabs-description" class="nav-link" data-bs-toggle="tab"><!-- Download SVG icon from http://tabler-icons.io/i/user -->
-                       Description</a>
+                        Description</a>
                 </li>
                 <li class="nav-item">
                     <a href="#tabs-keywords" class="nav-link" data-bs-toggle="tab"><!-- Download SVG icon from http://tabler-icons.io/i/user -->
@@ -33,9 +35,9 @@
                         </div>
                     </div>
                     <div class="tab-pane" id="tabs-description">
-                   <div>
-                       {{$data->description}}
-                   </div>
+                        <div>
+                            {{$data->description}}
+                        </div>
                     </div>
                     <div class="tab-pane" id="tabs-keywords">
                         <div>
@@ -56,7 +58,7 @@
             </div>
             <div class="card-footer">
                 <div class="form-group text-end">
-                    <a href="{{route('admin.category.edit',['id'=>$data->id])}}" class="btn btn-warning">Update</a>
+                    <a href="{{route('admin.treatment.edit',['id'=>$data->id])}}" class="btn btn-warning">Update</a>
                 </div>
 
             </div>
