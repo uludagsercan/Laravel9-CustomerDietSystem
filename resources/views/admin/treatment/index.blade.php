@@ -37,6 +37,7 @@
                     <thead>
                     <tr>
                         <th>Id</th>
+                        <th>Category</th>
                         <th>Image</th>
                         <th>Title</th>
                         <th>Description</th>
@@ -54,6 +55,7 @@
                     @foreach($data as $rs)
                         <tr>
                             <td>{{$rs->id}}</td>
+                            <td>{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs->category,$rs->category->title)}}</td>
                             <td><img src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" style="width: 50px" ></td>
                             <td>@if(strlen($rs->title)>15) {{substr($rs->title,0,15)}}... @else {{$rs->title }}@endif</td>
                             <td>@if(strlen($rs->description)>15) {{substr($rs->description,0,15)}}... @else {{$rs->description}}@endif</td>
