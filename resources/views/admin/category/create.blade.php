@@ -43,6 +43,14 @@
 
                     </div>
                 </div>
+                <div class="mb-3">
+                    <select class="form-select" id="floatingSelect" name="parent_id" aria-label="Floating label select example">
+                        <option selected="selected" value="0">Main Category</option>
+                        @foreach($data as $rs)
+                        <option value="{{$rs->id}}">{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title )}}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="text-end py-3">
                     <button class="btn btn-success">Save</button>
                 </div>

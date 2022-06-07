@@ -38,6 +38,7 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Image</th>
+                                    <th>Parent</th>
                                     <th>Title</th>
                                     <th>Description</th>
                                     <th>Keyword</th>
@@ -53,6 +54,7 @@
                                     <tr>
                                         <td>{{$rs->id}}</td>
                                         <td><img src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" style="width: 50px" ></td>
+                                        <td>{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title)}}</td>
                                         <td>{{$rs->title}}</td>
                                         <td>{{$rs->description}}</td>
                                         <td>{{$rs->keywords}}</td>
@@ -121,7 +123,15 @@
                         <div class="form-label">Image</div>
                         <input type="file" name="fimage" class="form-control">
                     </div>
+                    <div class="mb-3">
+                        <select class="form-select" id="floatingSelect" name="parent_id" aria-label="Floating label select example">
+                            <option selected="selected" value="0">Main Category</option>
+                            @foreach($data as $rs)
+                                <option value="{{$rs->id}}">{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title )}}</option>
+                            @endforeach
 
+                        </select>
+                    </div>
 
                 </div>
 

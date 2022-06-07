@@ -45,10 +45,10 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        $category = Category::all();
+        $categories = Category::all();
 
         return view('admin.category.create',[
-            'data'=>$category
+            'data'=>$categories
         ]);
     }
 
@@ -62,7 +62,7 @@ class CategoryController extends Controller
     {
         //
         $category = new Category();
-        $category->parent_id = 0;
+        $category->parent_id = $request->parent_id;
         $category->title=$request->title;
         $category->description = $request->description;
         if ($request->file('fimage')){
@@ -85,9 +85,10 @@ class CategoryController extends Controller
     {
         //
         $category = Category::find($id);
-
+        $categories = Category::all();
         return view('admin.category.show',[
-            'data'=>$category
+            'data'=>$category,
+            'datalist'=>$categories
         ]);
 
     }
@@ -102,8 +103,10 @@ class CategoryController extends Controller
     {
         //
         $category = Category::find($id);
+        $categories = Category::all();
         return view('admin.category.edit',[
-           "data"=>$category
+           "data"=>$category,
+            "dataList"=>$categories
         ]);
     }
 
@@ -118,7 +121,7 @@ class CategoryController extends Controller
     {
         //
         $category = Category::find($id);
-        $category->parent_id = 0;
+        $category->parent_id = $request->parent_id;
         $category->title=$request->title;
         $category->description = $request->description;
         if ($request->file('fimage')){

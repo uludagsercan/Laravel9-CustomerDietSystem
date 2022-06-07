@@ -51,6 +51,15 @@
                         </div>
                     </div>
                 </div>
+                </div>
+                <div class="mb-3">
+                    <select class="form-select" id="floatingSelect" name="parent_id" aria-label="Floating label select example">
+                        <option selected="selected" value="0">Main Category</option>
+                        @foreach($dataList as $rs)
+                            <option value="{{$rs->id}}">{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title )}}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="mb-3">
                     <div class="form-label">Select</div>
                     <select class="form-select">

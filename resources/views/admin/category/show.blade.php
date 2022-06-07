@@ -8,6 +8,7 @@
                     <a href="#tabs-title" class="nav-link active" data-bs-toggle="tab"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                         Title</a>
                 </li>
+
                 <li class="nav-item">
                     <a href="#tabs-description" class="nav-link" data-bs-toggle="tab"><!-- Download SVG icon from http://tabler-icons.io/i/user -->
                        Description</a>
@@ -29,7 +30,9 @@
                 <div class="tab-content">
                     <div class="tab-pane active show" id="tabs-title">
                         <div>
-                            {{$data->title}}
+
+                            {{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($data,$data->title)}}
+
                         </div>
                     </div>
                     <div class="tab-pane" id="tabs-description">
