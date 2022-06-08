@@ -3,28 +3,17 @@
 @section('title','Add Category')
 
 @section('content')
-
-    <form action="{{route('admin.treatment.update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('admin.category.update',['id'=>$data->id])}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="card-header">
-                <h5>Update Treatment</h5>
+                <h5>Add Category</h5>
             </div>
 
             <div class="card-body">
                 <div class="mb-3">
                     <label class="form-label">Title</label>
                     <input type="text" class="form-control" name="title" value="{{$data->title}}">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Category</label>
-                    <select class="form-select" id="floatingSelect" name="category_id" aria-label="Floating label select example">
-                        <option selected="selected" value="0">Main Category</option>
-                        @foreach($categories as $rs)
-                            <option value="{{$rs->id}}" @if($rs->id == $data->category_id) selected="selected" @endif>
-                                {{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title )}}</option>
-                        @endforeach
-                    </select>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Description</label>
@@ -35,25 +24,10 @@
                     <label class="form-label">Keyword</label>
                     <input type="text" class="form-control" name="keywords" value="{{$data->keywords}}">
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Detail</label>
-                    <input type="text" class="form-control" name="detail" value="{{$data->detail}}">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Price</label>
-                    <input type="number" class="form-control" name="price" value="{{$data->price}}">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Tax</label>
-                    <input type="number" class="form-control" name="price" value="{{$data->tax}}">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Discount</label>
-                    <input type="number" class="form-control" name="price" value="{{$data->discount}}">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Image</label>
-                </div>
+
+        <div class="mb-3">
+            <label class="form-label">Image</label>
+        </div>
                 <div class="card">
                     <div class="card-body">
                         <div class="row align-items-center">
@@ -72,10 +46,19 @@
                                 </div>
                             </div>
                             <div class="col-3 text-end">
-                                <img src="{{\Illuminate\Support\Facades\Storage::url($data->image)}}" style="width: 120px" class="rounded">
+                                <img src="{{\Illuminate\Support\Facades\Storage::url($data->image)}}" style="width: 120px" alt="Food Deliver UI dashboards" class="rounded">
                             </div>
                         </div>
                     </div>
+                </div>
+                </div>
+                <div class="mb-3">
+                    <select class="form-select" id="floatingSelect" name="parent_id" aria-label="Floating label select example">
+                        <option selected="selected" value="0">Main Category</option>
+                        @foreach($dataList as $rs)
+                            <option value="{{$rs->id}}">{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title )}}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="mb-3">
                     <div class="form-label">Select</div>

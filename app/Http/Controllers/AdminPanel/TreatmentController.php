@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Treatment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -18,8 +19,10 @@ class TreatmentController extends Controller
     {
         //
         $treatments = Treatment::all();
+        $categories = Category::all();
         return view('admin.treatment.index',[
-           'data'=>$treatments
+           'data'=>$treatments,
+            'categories'=>$categories
         ]);
     }
 
@@ -31,7 +34,10 @@ class TreatmentController extends Controller
     public function create()
     {
         //
-        return view('admin.treatment.create');
+        $data = Category::all();
+        return view('admin.treatment.create',[
+            'data'=>$data
+        ]);
     }
 
     /**
@@ -46,13 +52,16 @@ class TreatmentController extends Controller
         $treatment = new Treatment();
         $treatment->title = $request->title;
         $treatment->description = $request->description;
-        $treatment->keywords = $request->keyword;
+        $treatment->keywords = $request->keywords;
         $treatment->detail = $request->detail;
+        $treatment->quantity = $request->quantity;
+        $treatment->minquantity = $request->minquantity;
         if($request->file('fimage')){
             $treatment->image = $request->file('fimage')->store('images');
         }
         $treatment->price = $request->price;
-        $treatment->category_id = 2;
+
+        $treatment->category_id = $request->category_id;
         $treatment->user_id=0;
         $treatment->status = (boolean)$request->status;
         $treatment->discount = $request->discount;
@@ -73,9 +82,10 @@ class TreatmentController extends Controller
     {
         //
         $treatment = Treatment::find($id);
-
+        $dataList = Category::all();
         return view('admin.treatment.show',[
-            'data'=> $treatment
+            'data'=> $treatment,
+            'dataList'=>$dataList
         ]);
     }
 
@@ -89,8 +99,10 @@ class TreatmentController extends Controller
     {
         //
         $treatment = Treatment::find($id);
+        $categories = Category::all();
         return view('admin.treatment.edit',[
-            'data'=> $treatment
+            'data'=> $treatment,
+            'categories'=>$categories
         ]);
     }
 
@@ -107,11 +119,14 @@ class TreatmentController extends Controller
         $treatment= Treatment::find($id);
         $treatment->title = $request->title;
         $treatment->description = $request->description;
-        $treatment->keywords = $request->keyword;
+        $treatment->keywords = $request->keywords;
         $treatment->detail = $request->detail;
-        $treatment->image = $request->fimage;
-
-        $treatment->category_id = 2;
+        if($request->file('fimage')){
+            $treatment->image = $request->file('fimage')->store('images');
+        }
+        $treatment->quantity = $request->quantity;
+        $treatment->minquantity = $request->minquantity;
+        $treatment->category_id = $request->category_id;
         $treatment->user_id=0;
         $treatment->status = (boolean)$request->status;
         $treatment->discount = $request->discount;
@@ -130,7 +145,10 @@ class TreatmentController extends Controller
     {
         //
         $treatment = Treatment::find($id);
-        Storage::delete($treatment->image);
+        if ($treatment->image && Storage::disk('public')->exists($treatment->image)){
+            Storage::delete($treatment->image);
+        }
+
         $treatment->delete();
         return redirect('admin/treatment');
     }

@@ -45,7 +45,9 @@
                         <th>Detail</th>
                         <th>Price</th>
                         <th>Status</th>
+                        <th>Image Galery</th>
                         <th>Edit</th>
+
                         <th>Delete</th>
                         <th>Show</th>
 
@@ -63,6 +65,9 @@
                             <td>@if(strlen($rs->detail)>15) {{substr($rs->detail,0,15)}}... @else {{$rs->detail}}@endif</td>
                             <td>{{$rs->price}}</td>
                             <td>{{$rs->status ? 'True':'False'}}</td>
+                            <td><a href="{{route('admin.image.index',['tid'=>$rs->id])}}"
+                                   onclick="return !window.open(this.href,'','top=50 left=100 width=1100,height=700')">
+                                    <img src="{{asset('assets')}}/admin/dist/img/imagegalery.png" style="width: 50px"></a></td>
                             <td><a class="btn btn-outline-info" href="{{route('admin.treatment.edit',['id'=>$rs->id])}}">Edit</a></td>
                             <td><a class="btn btn-outline-danger" href="{{route('admin.treatment.destroy',['id'=>$rs->id])}}">Delete</a></td>
 
@@ -97,7 +102,7 @@
             </div>
         </div>
     </div>
-
+<!--@{{route('admin.treatment.store',['pid'=>$data->id])}}-->
 
 
     <form action="{{route('admin.treatment.store')}}" method="post" enctype="multipart/form-data">
@@ -115,6 +120,15 @@
                             <input type="text" class="form-control" name="title" placeholder="Title">
                         </div>
                         <div class="mb-3">
+                            <label class="form-label">Category</label>
+                            <select class="form-select" id="floatingSelect" name="category_id" aria-label="Floating label select example">
+                                <option selected="selected" value="0">Main Category</option>
+                                @foreach($categories as $rs)
+                                    <option value="{{$rs->id}}">{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title )}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label">Description</label>
                             <input type="text" class="form-control" name="description" placeholder="Description">
                         </div>
@@ -129,6 +143,14 @@
                         <div class="mb-3">
                             <label class="form-label">Price</label>
                             <input type="number" class="form-control" name="price" placeholder="price">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Quantity</label>
+                            <input type="number" class="form-control" name="quantity" placeholder="Quantity">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Min Quantity</label>
+                            <input type="number" class="form-control" name="minquantity" placeholder="Min Quantity">
                         </div>
 
                         <div class="mb-3">

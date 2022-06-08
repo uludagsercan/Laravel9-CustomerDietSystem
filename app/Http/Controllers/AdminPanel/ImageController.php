@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
+use App\Models\Treatment;
+use App\Models\Image;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ImageController extends Controller
 {
@@ -12,9 +15,16 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($tid)
     {
         //
+        $treatment = Treatment::find($tid);
+        $images = DB::table('images')->where('treatment_id',$tid)->get();
+
+        return view('admin.image.index',[
+            '$datalist'=>$images,
+            '$treatmentData'=>$treatment
+        ]);
     }
 
     /**
@@ -22,9 +32,10 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($pid)
     {
         //
+        return redirect()->route();
     }
 
     /**
@@ -33,7 +44,7 @@ class ImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$pid)
     {
         //
     }
@@ -44,7 +55,7 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($pid,$id)
     {
         //
     }
@@ -55,7 +66,7 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($pid,$id)
     {
         //
     }
@@ -67,7 +78,7 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$pid, $id)
     {
         //
     }
@@ -78,7 +89,7 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($pid,$id)
     {
         //
     }

@@ -15,6 +15,15 @@
                     <label class="form-label">Title</label>
                     <input type="text" class="form-control" name="title">
                 </div>
+                <div class="mb-3">
+                    <label class="form-label">Category</label>
+                    <select class="form-select" id="floatingSelect" name="category_id" aria-label="Floating label select example">
+                        <option selected="selected" value="0">Main Category</option>
+                        @foreach($data as $rs)
+                            <option value="{{$rs->id}}">{{\App\Http\Controllers\AdminPanel\CategoryController::getParentsTree($rs,$rs->title )}}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="col-md-12">
                     <label class="form-label">Description</label>
                     <input type="text" class="form-control" name="description">
@@ -40,11 +49,20 @@
                     <label class="form-label">Discount</label>
                     <input type="price" class="form-control" name="discount">
                 </div>
+                <div class="col-md-12">
+                    <label class="form-label">Quantity</label>
+                    <input type="number" class="form-control" name="quantity">
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label">Min Quantity</label>
+                    <input type="number" class="form-control" name="minquantity">
+                </div>
 
                 <div class="col-md-12">
                     <label class="form-label">Image</label>
                     <input type="file" class="form-control" name="fimage">
                 </div>
+
                 <div class="mb-3 py-3">
                     <div class="form-label">Status</div>
                     <div>

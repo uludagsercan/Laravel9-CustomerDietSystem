@@ -44,25 +44,25 @@ Route::prefix('/admin')->name('admin.')->controller(AdminController::class)->gro
         Route::get('/destroy/{id}','destroy')->name('destroy');
 
     });
-
+    //-----------------Admin Panel-Treatment-------------------
     Route::prefix('/treatment')->name('treatment.')->controller(\App\Http\Controllers\AdminPanel\TreatmentController::class)->group(function (){
         Route::get('/','index')->name('index');
-        Route::get('/create','create')->name('create');
-        Route::post('/store','store')->name('store');
+        Route::get('/create/','create')->name('create');
+        Route::post('/store/','store')->name('store');
         Route::get('/edit/{id}','edit')->name('edit');
         Route::post('/update/{id}','update')->name('update');
         Route::get('/show/{id}','show')->name('show');
         Route::get('/destroy/{id}','destroy')->name('destroy');
     });
-
-    Route::prefix('/image')->name('treatment.')->controller(\App\Http\Controllers\AdminPanel\ImageController::class)->group(function (){
-        Route::get('/','index')->name('index');
-        Route::get('/create','create')->name('create');
-        Route::post('/store','store')->name('store');
-        Route::get('/edit/{id}','edit')->name('edit');
-        Route::post('/update/{id}','update')->name('update');
-        Route::get('/show/{id}','show')->name('show');
-        Route::get('/destroy/{id}','destroy')->name('destroy');
+    //-----------------Admin Panel-Image Gallery-------------------
+    Route::prefix('/image')->name('image.')->controller(\App\Http\Controllers\AdminPanel\ImageController::class)->group(function (){
+        Route::get('/{tid}','index')->name('index');
+        Route::get('/create/{tid}','create')->name('create');
+        Route::post('/store/{tid}','store')->name('store');
+        Route::get('/edit/{tid}/{id}','edit')->name('edit');
+        Route::post('/update/{tid}/{id}','update')->name('update');
+        Route::get('/show/{tid}/{id}','show')->name('show');
+        Route::get('/destroy/{tid}/{id}','destroy')->name('destroy');
     });
 
 });

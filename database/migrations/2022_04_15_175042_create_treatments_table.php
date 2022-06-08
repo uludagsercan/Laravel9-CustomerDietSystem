@@ -22,10 +22,12 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->foreignId('category_id');
             $table->foreignId('user_id')->nullable();
-            $table->boolean('status');
+            $table->boolean('status')->default(false);
             $table->integer('price')->nullable();
             $table->integer('tax')->nullable();
             $table->integer('discount')->nullable();
+            $table->integer('quantity')->nullable();
+            $table->integer('minquantity')->nullable();
             $table->timestamps();
         });
     }
