@@ -62,7 +62,7 @@
                             <td>@if(strlen($rs->title)>15) {{substr($rs->title,0,15)}}... @else {{$rs->title }}@endif</td>
                             <td>@if(strlen($rs->description)>15) {{substr($rs->description,0,15)}}... @else {{$rs->description}}@endif</td>
                             <td>@if(strlen($rs->keywords)>15) {{substr($rs->keywords,0,15)}}... @else {{$rs->keywords}}@endif</td>
-                            <td>@if(strlen($rs->detail)>15) {{substr($rs->detail,0,15)}}... @else {{$rs->detail}}@endif</td>
+                            <td>@if(strlen($rs->detail)>15) {!!substr($rs->detail,0,15)!!}... @else {{$rs->detail}}@endif</td>
                             <td>{{$rs->price}}</td>
                             <td>{{$rs->status ? 'True':'False'}}</td>
                             <td><a href="{{route('admin.image.index',['tid'=>$rs->id])}}"

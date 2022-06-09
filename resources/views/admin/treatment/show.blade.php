@@ -15,6 +15,10 @@
                         Description</a>
                 </li>
                 <li class="nav-item">
+                    <a href="#tabs-detail" class="nav-link" data-bs-toggle="tab"><!-- Download SVG icon from http://tabler-icons.io/i/user -->
+                        Detail</a>
+                </li>
+                <li class="nav-item">
                     <a href="#tabs-keywords" class="nav-link" data-bs-toggle="tab"><!-- Download SVG icon from http://tabler-icons.io/i/user -->
                         Keywords</a>
                 </li>
@@ -40,6 +44,11 @@
                     <div class="tab-pane active show" id="tabs-title">
                         <div>
                             {{$data->title}}
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tabs-detail">
+                        <div>
+                            {!! $data->detail!!}
                         </div>
                     </div>
                     <div class="tab-pane" id="tabs-description">

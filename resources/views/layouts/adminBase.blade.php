@@ -12,6 +12,7 @@
         <link href="{{asset("assets")}}/admin/dist/css/tabler-payments.min.css" rel="stylesheet"/>
         <link href="{{asset("assets")}}/admin/dist/css/tabler-vendors.min.css" rel="stylesheet"/>
         <link href="{{asset("assets")}}/admin/dist/css/demo.min.css" rel="stylesheet"/>
+        @yield('head')
     </head>
 </head>
 <body>

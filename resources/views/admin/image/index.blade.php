@@ -1,6 +1,7 @@
 @extends('layouts.adminWindow')
 @section('title',"Image Gallery")
 
+
 @section('content')
 
     <div class="container-xl">
