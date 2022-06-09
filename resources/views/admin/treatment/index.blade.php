@@ -45,7 +45,7 @@
                         <th>Detail</th>
                         <th>Price</th>
                         <th>Status</th>
-                        <th>Image Galery</th>
+                        <th>Image Gallery</th>
                         <th>Edit</th>
 
                         <th>Delete</th>
@@ -67,7 +67,7 @@
                             <td>{{$rs->status ? 'True':'False'}}</td>
                             <td><a href="{{route('admin.image.index',['tid'=>$rs->id])}}"
                                    onclick="return !window.open(this.href,'','top=50 left=100 width=1100,height=700')">
-                                    <img src="{{asset('assets')}}/admin/dist/img/imagegalery.png" style="width: 50px"></a></td>
+                                    <img src="{{asset('assets')}}/admin/dist/img/imagegallery.png" style="width: 50px"></a></td>
                             <td><a class="btn btn-outline-info" href="{{route('admin.treatment.edit',['id'=>$rs->id])}}">Edit</a></td>
                             <td><a class="btn btn-outline-danger" href="{{route('admin.treatment.destroy',['id'=>$rs->id])}}">Delete</a></td>
 

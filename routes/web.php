@@ -57,11 +57,9 @@ Route::prefix('/admin')->name('admin.')->controller(AdminController::class)->gro
     //-----------------Admin Panel-Image Gallery-------------------
     Route::prefix('/image')->name('image.')->controller(\App\Http\Controllers\AdminPanel\ImageController::class)->group(function (){
         Route::get('/{tid}','index')->name('index');
-        Route::get('/create/{tid}','create')->name('create');
         Route::post('/store/{tid}','store')->name('store');
         Route::get('/edit/{tid}/{id}','edit')->name('edit');
         Route::post('/update/{tid}/{id}','update')->name('update');
-        Route::get('/show/{tid}/{id}','show')->name('show');
         Route::get('/destroy/{tid}/{id}','destroy')->name('destroy');
     });
 

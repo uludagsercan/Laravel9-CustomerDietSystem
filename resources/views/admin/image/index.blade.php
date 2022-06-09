@@ -1,7 +1,8 @@
-@extends('layouts.adminBase')
-@section('title',"Image panel")
+@extends('layouts.adminWindow')
+@section('title',"Image Gallery")
 
 @section('content')
+
     <div class="container-xl">
         <!-- Page title -->
         <div class="page-header d-print-none">
@@ -14,7 +15,7 @@
                         <a href="#" class="btn btn-primary d-none d-sm-inline-block" data-bs-toggle="modal" data-bs-target="#modal-report">
                             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
-                            Add Category
+                            Add Image
                         </a>
                         <a href="#" class="btn btn-primary d-sm-none btn-icon" data-bs-toggle="modal" data-bs-target="#modal-report" aria-label="Create new report">
                             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
@@ -36,18 +37,26 @@
                             <table class="table card-table table-vcenter text-nowrap datatable">
                                 <thead>
                                 <tr>
-
+                                    <th>Id</th>
                                     <th>Title</th>
                                     <th>Image</th>
+                                    <th>Update</th>
+                                    <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($datalist as $rs)
                                     <tr>
+                                        <td>{{$rs->id}}</td>
                                         <td>{{$rs->title}}</td>
-                                        <td>{{\Illuminate\Support\Facades\Storage::url($rs->image)}}</td>
-
+                                        <td><img src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" style="width: 50px"></td>
+                                        <td>
+                                            <a class="btn btn-warning"
+                                               href="{{route('admin.image.edit',['tid'=>$treatmentData->id,'id'=>$rs->id])}}">Update</a></td>
+                                        <td><a class="btn btn-danger" href="{{route('admin.image.destroy',['tid'=>$treatmentData->id,'id'=>$rs->id])}}"
+                                            >Delete</a></td>
                                     </tr>
+
                                 @endforeach
                                 </tbody>
                             </table>
@@ -80,7 +89,7 @@
 
 
 
-<form action="{{route('admin.category.store')}}" method="post" enctype="multipart/form-data">
+<form action="{{route('admin.image.store',['tid'=>$treatmentData->id])}}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="modal modal-blur fade" id="modal-report" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -95,26 +104,9 @@
                         <input type="text" class="form-control" name="title" placeholder="Title">
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Description</label>
-                        <input type="text" class="form-control" name="description" placeholder="Description">
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Keyword</label>
-                        <input type="text" class="form-control" name="keywords" placeholder="Keyword">
-                    </div>
-
-                    <div class="mb-3">
                         <div class="form-label">Image</div>
                         <input type="file" name="fimage" class="form-control">
                     </div>
-                    <div class="mb-3">
-                        <select class="form-select" id="floatingSelect" name="parent_id" aria-label="Floating label select example">
-                            <option selected="selected" value="0">Main Category</option>
-
-
-                        </select>
-                    </div>
-
                 </div>
 
                 <div class="modal-footer">

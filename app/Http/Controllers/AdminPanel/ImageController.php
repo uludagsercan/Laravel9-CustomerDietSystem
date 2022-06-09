@@ -7,6 +7,7 @@ use App\Models\Treatment;
 use App\Models\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ImageController extends Controller
 {
@@ -22,8 +23,8 @@ class ImageController extends Controller
         $images = DB::table('images')->where('treatment_id',$tid)->get();
 
         return view('admin.image.index',[
-            '$datalist'=>$images,
-            '$treatmentData'=>$treatment
+            'datalist'=>$images,
+            'treatmentData'=>$treatment
         ]);
     }
 
@@ -32,11 +33,7 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($pid)
-    {
-        //
-        return redirect()->route();
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -44,9 +41,16 @@ class ImageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$pid)
+    public function store(Request $request,$tid)
     {
-        //
+        $imageGalley = new Image();
+        $imageGalley->title = $request->title;
+        if ($request->file('fimage')){
+            $imageGalley->image = $request->file('fimage')->store('images');
+        }
+        $imageGalley->treatment_id = $tid;
+        $imageGalley->save();
+        return redirect()->route('admin.image.index',['tid'=>$tid]);
     }
 
     /**
@@ -55,10 +59,7 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($pid,$id)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -66,9 +67,17 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($pid,$id)
+    public function edit($tid,$id)
     {
         //
+        $treatment = Treatment::find($tid);
+        $treatments = Treatment::all();
+        $image = Image::find($id);
+        return view('admin.image.edit',[
+            'treatmentData'=>$treatment,
+            'imageData'=>$image,
+            'treatmentsData'=>$treatments
+        ]);
     }
 
     /**
@@ -78,9 +87,17 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$pid, $id)
+    public function update(Request $request,$tid, $id)
     {
         //
+        $imageGalley = Image::find($id);
+        $imageGalley->title = $request->title;
+        if ($request->file('fimage')){
+            $imageGalley->image = $request->file('fimage')->store('images');
+        }
+        $imageGalley->treatment_id = $request->treatment_id;
+        $imageGalley->save();
+        return redirect()->route('admin.image.index',['tid'=>$tid]);
     }
 
     /**
@@ -89,8 +106,17 @@ class ImageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($pid,$id)
+    public function destroy($tid,$id)
     {
         //
+
+        $image = Image::find($id);
+        if ($image->image && Storage::disk('public')->exists($image->image)){
+            Storage::delete($image->image);
+        }
+
+        $image->delete();
+        return redirect()->route('admin.image.index',['tid'=>$tid]);
+
     }
 }

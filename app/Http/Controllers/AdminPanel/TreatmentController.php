@@ -68,8 +68,6 @@ class TreatmentController extends Controller
         $treatment->tax = $request->tax;
         $treatment->save();
         return redirect('admin/treatment');
-
-
     }
 
     /**

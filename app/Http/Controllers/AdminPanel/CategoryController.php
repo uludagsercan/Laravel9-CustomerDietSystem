@@ -46,7 +46,6 @@ class CategoryController extends Controller
     {
         //
         $categories = Category::all();
-
         return view('admin.category.create',[
             'data'=>$categories
         ]);
