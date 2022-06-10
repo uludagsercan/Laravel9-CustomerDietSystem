@@ -21,6 +21,7 @@ use \App\Http\Controllers\AdminPanel\CategoryController;
 //});
 
 Route::get('/',[HomeController::class,'index'])->name('home');
+Route::get('/treatment/{tid}',[HomeController::class,'treatment'])->name('treatment');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

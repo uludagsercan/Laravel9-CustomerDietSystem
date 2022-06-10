@@ -2,9 +2,11 @@
 
 @section('title',"E Commerce Customer Diet")
 
+@section('slider')
+    @include('home.slider')
+@endsection
 @section('content')
-    <div class="main">
-        <div class="container">
+
             <!-- BEGIN SALE PRODUCT & NEW ARRIVALS -->
             <div class="row margin-bottom-40">
                 <!-- BEGIN SALE PRODUCT -->
@@ -24,9 +26,9 @@
                                     <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
                                 </div>
                             </div>
-                            <h3><a href="shop-item.html">Berry Lace Dress</a></h3>
-                            <div class="pi-price">$29.00</div>
-                            <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>
+                            <h3><a href="shop-item.html">{{$rs->title}}</a></h3>
+                            <div class="pi-price">{{$rs->price}}</div>
+                            <a href="javascript:;" class="btn btn-default add2cart">Sepete Ekle</a>
                             <div class="sticker sticker-sale"></div>
                         </div>
                         @endforeach
@@ -301,6 +303,5 @@
                 <!-- END PROMO -->
             </div>
             <!-- END TWO PRODUCTS & PROMO -->
-        </div>
-    </div>
+
 @endsection

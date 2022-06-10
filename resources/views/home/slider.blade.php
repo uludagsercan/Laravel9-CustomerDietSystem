@@ -17,7 +17,7 @@
             <div class="item active" style="background-image: url({{\Illuminate\Support\Facades\Storage::url($sliderData[0]->image)}});background-size: cover;background-position: center center;">
                 <div class="container">
                     <div class="carousel-position-three text-center">
-                        <a class="carousel-btn-red" href="#" data-animation="animated fadeInUp">See More Details</a>
+                        <a class="carousel-btn-red" href="{{route('treatment',[$sliderData[0]->id])}}" data-animation="animated fadeInUp">Detay Sayfası</a>
                     </div>
                 </div>
 
@@ -30,7 +30,7 @@
             <div class="item" style="background: url({{\Illuminate\Support\Facades\Storage::url($slider->image)}})">
                 <div class="container">
                     <div class="carousel-position-three text-center">
-                        <a class="carousel-btn-red" href="#" data-animation="animated fadeInUp">See More Details</a>
+                        <a class="carousel-btn-red" href="{{route('treatment',[$slider->id])}}" data-animation="animated fadeInUp">Detay Sayfası</a>
                     </div>
                 </div>
             </div>
