@@ -1,3 +1,4 @@
+<div class="col-md-9 col-sm-7">
 <div class="page-slider margin-bottom-35">
     <div id="carousel-example-generic" class="carousel slide carousel-slider">
         <!-- Indicators -->
@@ -47,4 +48,6 @@
                 <i class="fa fa-angle-right" aria-hidden="true" style="background: #0a66c2"></i>
         </a>
     </div>
+</div>
+</div>
 </div>

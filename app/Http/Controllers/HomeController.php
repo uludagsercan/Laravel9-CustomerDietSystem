@@ -31,5 +31,15 @@ class HomeController extends Controller
                 'imagesData'=>$images
             ]);
     }
+    public function categorytreatments($id,$slug){
+
+        $treatment = Treatment::find($id);
+        $images = DB::table('images')->where('treatment_id',$id)->get();
+        return view('home.treatment',
+            [
+                'treatmentData'=>$treatment,
+                'imagesData'=>$images
+            ]);
+    }
 
 }

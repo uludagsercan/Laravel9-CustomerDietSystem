@@ -50,12 +50,19 @@
 <body>
 @include('home.header')
 @section('sidebar')
-@include('home.sidebar')
-@show
-@yield('slider')
+
+
 <div class="main">
     <div class="container">
-@yield('content')
+        <div class="row margin-bottom-40">
+            @include('home.sidebar')
+            @show
+            @yield('slider')
+            @yield('content')
+        </div>
+
+
+
     </div>
 </div>
 
@@ -76,9 +83,12 @@
 <script src="{{asset('assets')}}/plugins/owl.carousel/owl.carousel.min.js" type="text/javascript"></script><!-- slider for products -->
 <script src='{{asset('assets')}}/plugins/zoom/jquery.zoom.min.js' type="text/javascript"></script><!-- product zoom -->
 <script src="{{asset('assets')}}/plugins/bootstrap-touchspin/bootstrap.touchspin.js" type="text/javascript"></script><!-- Quantity -->
-
+<script src="{{asset('assets')}}/plugins/rateit/src/jquery.rateit.js" type="text/javascript"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js" type="text/javascript"></script><!-- for slider-range -->
 <script src="{{asset('assets')}}/corporate/scripts/layout.js" type="text/javascript"></script>
 <script src="{{asset('assets')}}/pages/scripts/bs-carousel.js" type="text/javascript"></script>
+
+<script src="{{asset('assets')}}/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     jQuery(document).ready(function() {
         Layout.init();
