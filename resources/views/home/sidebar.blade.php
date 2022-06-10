@@ -14,7 +14,8 @@
                     @foreach($mainCategories as $rs)
                     <li class="list-group-item dropdown clearfix">
 
-                        <a href="javascript:void(0);"><i class="fa fa-angle-right" onclick="redirectToTitle()"></i> {{$rs->title}} </a>
+                        <a href="{{route('categorytreatments',['id'=>$rs->id,'slug'=>$rs->title])}}"><i class="fa fa-angle-right" ></i>
+                            <a href="{{route('categorytreatments',['id'=>$rs->id,'slug'=>$rs->title])}}">{{$rs->title}} </a> </a>
                         @if(count($rs->children))
                             @include('home.categorytree',['children'=>$rs->children])
                         @endif
@@ -31,8 +32,9 @@
     </div>
 
     <script>
-        function redirectToTitle(){
-            window.location.href="{{route('categorytreatments',['id'=>$rs->id,'slug'=>$rs->title])}}"
+        function redirectToTitle(id){
+
+            window.location.href=""
         }
     </script>
 

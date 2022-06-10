@@ -3,9 +3,9 @@
 <ul class="dropdown-menu"  style="display: block; margin-bottom: 2px" >
     @if(count($subcategory->children))
     <li class="list-group-item dropdown clearfix">
-        <a href="javascript:void(0)" style="cursor:move;"><i class="fa fa-angle-right" onclick="redirectToTitle()">
+        <a href="{{route('categorytreatments',['id'=>$subcategory->id,'slug'=>$subcategory->title])}}"><button class="btn fa fa-angle-right">
 
-            </i> {{$subcategory->title}} </a>
+            </button><a href="{{route('categorytreatments',['id'=>$subcategory->id,'slug'=>$subcategory->title])}}">{{$subcategory->title}}</a></a>
         <ul class="dropdown-menu">
             @include('home.categorytree',['children'=>$subcategory->children])
 
@@ -18,7 +18,7 @@
 </ul>
 @endforeach
 <script>
-    function redirectToTitle(){
-        window.location.href="{{route('categorytreatments',['id'=>$subcategory->id,'slug'=>$subcategory->title])}}"
-    }
+function deneme(id){
+
+}
 </script>

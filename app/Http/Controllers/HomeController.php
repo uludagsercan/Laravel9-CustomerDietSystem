@@ -33,12 +33,14 @@ class HomeController extends Controller
     }
     public function categorytreatments($id,$slug){
 
-        $treatment = Treatment::find($id);
-        $images = DB::table('images')->where('treatment_id',$id)->get();
-        return view('home.treatment',
+
+        $category = Treatment::find($id);
+        $treatments = DB::table('treatments')->where('category_id',$id)->get();
+
+        return view('home.categorytreatments',
             [
-                'treatmentData'=>$treatment,
-                'imagesData'=>$images
+                'treatmentData'=>$treatments,
+                'category'=>$category
             ]);
     }
 
