@@ -23,6 +23,9 @@ use \App\Http\Controllers\AdminPanel\CategoryController;
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/treatment/{tid}',[HomeController::class,'treatment'])->name('treatment');
 Route::get('/categorytreatments/{id}/{slug}',[HomeController::class,'categorytreatments'])->name('categorytreatments');
+Route::get('/about',[HomeController::class,'about'])->name('about');
+Route::get('/references',[HomeController::class,'references'])->name('references');
+Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -33,6 +36,9 @@ Route::prefix('/admin')->name('admin.')->controller(AdminController::class)->gro
     //-----------------Admin Panel-------------------
 
     Route::get('/','index')->name('index');
+    Route::get('/setting','setting')->name('setting');
+    Route::post('/settingUpdate/{sid}','settingUpdate')->name('settingUpdate');
+
 
     Route::prefix('/category')->name('category.')->controller(CategoryController::class)->group(function (){
         //-----------------Category Route-------------------
@@ -64,6 +70,8 @@ Route::prefix('/admin')->name('admin.')->controller(AdminController::class)->gro
         Route::post('/update/{tid}/{id}','update')->name('update');
         Route::get('/destroy/{tid}/{id}','destroy')->name('destroy');
     });
+
+
 
 });
 

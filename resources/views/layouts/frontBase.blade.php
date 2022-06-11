@@ -7,9 +7,9 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-    <meta content="Metronic Shop UI description" name="description">
-    <meta content="Metronic Shop UI keywords" name="keywords">
-    <meta content="keenthemes" name="author">
+    <meta content="@yield("description")" name="description">
+    <meta content="@yield("keywords")" name="keywords">
+    <meta content="Sercan Uludag" name="author">
 
     <meta property="og:site_name" content="-CUSTOMER VALUE-">
     <meta property="og:title" content="-CUSTOMER VALUE-">
@@ -18,7 +18,7 @@
     <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
     <meta property="og:url" content="-CUSTOMER VALUE-">
 
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" href="@yield("icon")">
 
     <!-- Fonts START -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|PT+Sans+Narrow|Source+Sans+Pro:200,300,400,600,700,900&amp;subset=all" rel="stylesheet" type="text/css">

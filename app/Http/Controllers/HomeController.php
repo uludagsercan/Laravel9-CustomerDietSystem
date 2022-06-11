@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Setting;
 use App\Models\Treatment;
 use App\Models\Image;
 use Illuminate\Http\Request;
@@ -17,9 +18,11 @@ class HomeController extends Controller
     public function index(){
         $sliderData = Treatment::limit(4)->get();
         $treatmentList = Treatment::all()->take(5);
+        $setting = Setting::first();
         return view('home.index',[
             'sliderData'=>$sliderData,
-            'dataList'=>$treatmentList
+            'dataList'=>$treatmentList,
+            'setting'=>$setting
         ]);
     }
     public function treatment($tid){

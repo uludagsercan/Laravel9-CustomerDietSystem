@@ -1,7 +1,9 @@
 @extends('layouts.frontBase')
 
 @section('title',"E Commerce Customer Diet")
-
+@section('keywords',$setting->keywords)
+@section('description',$setting->description)
+@section('icon',\Illuminate\Support\Facades\Storage::url($setting->icon))
 @section('slider')
     @include('home.slider')
 @endsection
