@@ -7,9 +7,9 @@
 
 @section('content')
     <div class="col-md-9 col-sm-9">
-        <h1>About us</h1>
+        <h1>About Us</h1>
         <div class="content-page">
-            {!! $slider->about !!}
+            {!! $setting->about !!}
         </div>
     </div>
 @endsection

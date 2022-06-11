@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Faq;
 use App\Models\Setting;
 use App\Models\Treatment;
 use App\Models\Image;
@@ -38,7 +39,15 @@ class HomeController extends Controller
         $setting = Setting::first();
         return view('home.contact',['setting'=>$setting]);
     }
-
+    public function faq(){
+        $setting = Setting::first();
+        $faqData = Faq::all();
+        return view('home.faq',
+            [
+                'setting'=>$setting,
+                'dataList'=>$faqData
+            ]);
+    }
     public function messageStore(Request $request){
         $message = new \App\Models\Message();
         $message->name = $request->name;

@@ -134,6 +134,7 @@
 
                 <li><a href="{{route('about')}}">About</a></li>
                 <li><a href="{{route('references')}}">References</a></li>
+                <li><a href="{{route('faq')}}">Faq</a></li>
 
                 <!-- BEGIN TOP SEARCH -->
 
