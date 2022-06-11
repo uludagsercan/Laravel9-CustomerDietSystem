@@ -1,7 +1,9 @@
 @extends('layouts.frontBase')
 
 @section('title',"E Commerce Customer Diet")
-
+@section('head')
+    <link rel="stylesheet" href="{{asset('assets')}}/owncss/rating">
+@endsection
 
 @section('content')
     <div class="col-md-9 col-sm-7">
@@ -15,7 +17,7 @@
                     <div class="product-other-images">
                         @foreach($imagesData as $rs)
 
-                        <a href="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" class="fancybox-button" rel="photos-lib"><img alt="Berry Lace Dress" src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}"></a>
+                            <a href="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}" class="fancybox-button" rel="photos-lib"><img alt="Berry Lace Dress" src="{{\Illuminate\Support\Facades\Storage::url($rs->image)}}"></a>
                         @endforeach
                     </div>
 
@@ -51,7 +53,7 @@
 
                 <div class="product-page-content">
                     <ul id="myTab" class="nav nav-tabs">
-                        <li><a href="#Description" data-toggle="tab">Detay</a></li>
+                        <li><a href="#Description" data-toggle="tab">Detail</a></li>
 
                         <li class="active"><a href="#Reviews" data-toggle="tab">Reviews (2)</a></li>
                     </ul>
@@ -62,52 +64,62 @@
 
                         <div class="tab-pane fade in active" id="Reviews">
                             <!--<p>There are no reviews for this product.</p>-->
+                            @foreach($reviews as $rs)
                             <div class="review-item clearfix">
                                 <div class="review-item-submitted">
-                                    <strong>Bob</strong>
-                                    <em>30/12/2013 - 07:37</em>
-                                    <div class="rateit" data-rateit-value="5" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
-                                </div>
-                                <div class="review-item-content">
-                                    <p>Sed velit quam, auctor id semper a, hendrerit eget justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis vel arcu pulvinar dolor tempus feugiat id in orci. Phasellus sed erat leo. Donec luctus, justo eget ultricies tristique, enim mauris bibendum orci, a sodales lectus purus ut lorem.</p>
-                                </div>
-                            </div>
-                            <div class="review-item clearfix">
-                                <div class="review-item-submitted">
-                                    <strong>Mary</strong>
-                                    <em>13/12/2013 - 17:49</em>
-                                    <div class="rateit" data-rateit-value="2.5" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
-                                </div>
-                                <div class="review-item-content">
-                                    <p>Sed velit quam, auctor id semper a, hendrerit eget justo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis vel arcu pulvinar dolor tempus feugiat id in orci. Phasellus sed erat leo. Donec luctus, justo eget ultricies tristique, enim mauris bibendum orci, a sodales lectus purus ut lorem.</p>
-                                </div>
-                            </div>
-
-                            <!-- BEGIN FORM-->
-                            <form action="#" class="reviews-form" role="form">
-                                <h2>Write a review</h2>
-                                <div class="form-group">
-                                    <label for="name">Name <span class="require">*</span></label>
-                                    <input type="text" class="form-control" id="name">
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="text" class="form-control" id="email">
-                                </div>
-                                <div class="form-group">
-                                    <label for="review">Review <span class="require">*</span></label>
-                                    <textarea class="form-control" rows="8" id="review"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Rating</label>
-                                    <input type="range" value="4" step="0.25" id="backing5">
-                                    <div class="rateit" data-rateit-backingfld="#backing5" data-rateit-resetable="false"  data-rateit-ispreset="true" data-rateit-min="0" data-rateit-max="5">
+                                    <strong>{{$rs->user->name}}</strong>
+                                    <em>{{$rs->created_at}}</em>
+                                    <div class="review-form">
+                                        <i class="fa fa-star @if ($rs->rate<1) fa-star-o @endif"></i>
+                                        <i class="fa fa-star @if ($rs->rate<2) fa-star-o @endif"></i>
+                                        <i class="fa fa-star @if ($rs->rate<3) fa-star-o @endif"></i>
+                                        <i class="fa fa-star @if ($rs->rate<4) fa-star-o @endif"></i>
+                                        <i class="fa fa-star @if ($rs->rate<5) fa-star-o @endif"></i>
                                     </div>
                                 </div>
+                                <div class="review-item-content">
+                                    <strong>{{$rs->subject}}</strong>
+                                    <p>{{$rs->review}}</p>
+                                </div>
+                            </div>
+                        @endforeach
+
+
+                            <!-- BEGIN FORM-->
+                            <form action="{{route('storecomment',$treatmentData->id)}}" method="post" class="reviews-form" role="form">
+                              @csrf
+                                <h2>Write a review</h2>
+                                <div class="form-group">
+                                    <label for="subject">Subject <span class="require">*</span></label>
+                                    <input type="text" class="form-control" id="subject" name="subject">
+                                </div>
+                                <div class="form-group">
+                                    <label for="review">Review</label>
+                                    <textarea class="form-control" name="review" rows="5"></textarea>
+                                </div>
+
+
+                                    <label class="rating-label">Rating
+                                        <input
+                                            class="rating"
+                                            max="5"
+                                            oninput="this.style.setProperty('--value', `${this.valueAsNumber}`)"
+                                            step="1"
+                                            style="--value:5"
+                                            type="range"
+                                            value="5"
+                                            name="rate">
+
+                                    </label>
+                                @auth
                                 <div class="padding-top-20">
                                     <button type="submit" class="btn btn-primary">Send</button>
                                 </div>
+                                @else
+                                    <a href="/login" class="btn btn-primary">For Submit Your Review, Please Login</a>
+                                @endauth
                             </form>
+                            @include('home.message')
                             <!-- END FORM-->
                         </div>
                     </div>

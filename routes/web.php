@@ -28,6 +28,7 @@ Route::get('/references',[HomeController::class,'references'])->name('references
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::post('/messageStore',[HomeController::class,'messageStore'])->name('messageStore');
 Route::get('/faq',[HomeController::class,'faq'])->name('faq');
+Route::post('/storecomment/{tid}',[HomeController::class,'storecomment'])->name('storecomment');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -80,6 +81,14 @@ Route::prefix('/admin')->name('admin.')->controller(AdminController::class)->gro
         Route::get('/destroy/{id}','destroy')->name('destroy');
     });
     Route::prefix('/faq')->name('faq.')->controller(\App\Http\Controllers\AdminPanel\FaqController::class)->group(function (){
+        Route::get('/','index')->name('index');
+        Route::post('/store','store')->name('store');
+        Route::get('/edit/{id}','edit')->name('edit');
+        Route::post('/update/{id}','update')->name('update');
+        Route::get('/show/{id}','show')->name('show');
+        Route::get('/destroy/{id}','destroy')->name('destroy');
+    });
+    Route::prefix('/comment')->name('comment.')->controller(\App\Http\Controllers\AdminPanel\CommentController::class)->group(function (){
         Route::get('/','index')->name('index');
         Route::post('/store','store')->name('store');
         Route::get('/edit/{id}','edit')->name('edit');

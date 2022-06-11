@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Faq;
 use App\Models\Setting;
 use App\Models\Treatment;
 use App\Models\Image;
 use http\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -61,13 +63,26 @@ class HomeController extends Controller
         return redirect()->route('contact')->with('info','Your message has been sent, Thank You');
     }
 
+    public function storecomment(Request $request,$tid){
+        $comment = new Comment();
+        $comment->subject=$request->subject;
+        $comment->review = $request->review;
+        $comment->IP = request()->ip();
+        $comment->product_id = $tid;
+        $comment->user_id=Auth::id();
+        $comment->rate=$request->rate;
+        $comment->save();
+        return redirect()->route('treatment',['tid'=>$tid])->with('info','Your message has been sent, Thank You');
+    }
     public function treatment($tid){
         $treatment = Treatment::find($tid);
         $images = DB::table('images')->where('treatment_id',$tid)->get();
+        $reviews = Comment::where('product_id',$tid)->get();
         return view('home.treatment',
             [
                 'treatmentData'=>$treatment,
-                'imagesData'=>$images
+                'imagesData'=>$images,
+                'reviews'=>$reviews,
             ]);
     }
     public function categorytreatments($id,$slug){

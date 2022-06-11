@@ -15,6 +15,13 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
+            $table->integer('product_id');
+            $table->string('subject',100);
+            $table->string('review')->nullable();
+            $table->string('IP',20)->nullable();
+            $table->integer('rate')->default(0);
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
