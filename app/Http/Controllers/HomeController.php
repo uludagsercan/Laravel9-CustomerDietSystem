@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Setting;
 use App\Models\Treatment;
 use App\Models\Image;
+use http\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -36,6 +37,19 @@ class HomeController extends Controller
     public function contact(){
         $setting = Setting::first();
         return view('home.contact',['setting'=>$setting]);
+    }
+
+    public function messageStore(Request $request){
+        $message = new \App\Models\Message();
+        $message->name = $request->name;
+
+        $message->phone = $request->phone;
+        $message->message = $request->message;
+        $message->subject = $request->subject;
+        $message->ip = request()->ip();
+        $message->email = $request->email;
+        $message->save();
+        return redirect()->route('contact')->with('info','Your message has been sent, Thank You');
     }
 
     public function treatment($tid){

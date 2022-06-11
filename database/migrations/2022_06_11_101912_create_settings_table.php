@@ -34,7 +34,7 @@ return new class extends Migration
             $table->string('youtube',100)->nullable();
             $table->string('icon',100)->nullable();
             $table->text('about')->nullable();
-            $table->text('cantact')->nullable();
+            $table->text('contact')->nullable();
             $table->text('references')->nullable();
             $table->boolean('status')->default(false);
             $table->timestamps();
@@ -48,6 +48,7 @@ return new class extends Migration
      */
     public function down()
     {
+
         Schema::dropIfExists('settings');
     }
 };

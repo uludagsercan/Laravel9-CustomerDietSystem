@@ -26,6 +26,7 @@ Route::get('/categorytreatments/{id}/{slug}',[HomeController::class,'categorytre
 Route::get('/about',[HomeController::class,'about'])->name('about');
 Route::get('/references',[HomeController::class,'references'])->name('references');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
+Route::post('/messageStore',[HomeController::class,'messageStore'])->name('messageStore');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -70,7 +71,13 @@ Route::prefix('/admin')->name('admin.')->controller(AdminController::class)->gro
         Route::post('/update/{tid}/{id}','update')->name('update');
         Route::get('/destroy/{tid}/{id}','destroy')->name('destroy');
     });
-
+    Route::prefix('/message')->name('message.')->controller(\App\Http\Controllers\AdminPanel\MessageController::class)->group(function (){
+        Route::get('/','index')->name('index');
+        Route::get('/edit/{id}','edit')->name('edit');
+        Route::post('/update/{id}','update')->name('update');
+        Route::get('/show/{id}','show')->name('show');
+        Route::get('/destroy/{id}','destroy')->name('destroy');
+    });
 
 
 });
