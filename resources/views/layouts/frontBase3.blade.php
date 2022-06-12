@@ -48,14 +48,14 @@
     @yield("head")
 </head>
 <body>
-@include('home.header')
+
 
 
 @yield('content')
 
 
 
-@include('home.footer')
+
 
 
 

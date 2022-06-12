@@ -23,6 +23,8 @@ use \App\Http\Controllers\AdminPanel\CategoryController;
 Route::view('/loginuser','home.login');
 Route::view('/registeruser','home.register');
 Route::get('/logoutuser',[HomeController::class,'logout'])->name('logoutuser');
+Route::view('/loginadmin','admin.login');
+Route::post('/loginadmincheck',[\App\Http\Controllers\AdminPanel\HomeController::class,'loginadmincheck'])->name('loginadmincheck');
 
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/treatment/{tid}',[HomeController::class,'treatment'])->name('treatment');
