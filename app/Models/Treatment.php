@@ -15,4 +15,7 @@ class Treatment extends Model
     public function comments(){
         return $this->hasMany(Comment::class);
     }
+    public function shopcart(){
+        return $this->hasMany(ShopCart::class);
+    }
 }

@@ -22,6 +22,9 @@
                     </div>
 
                 </div>
+                <div>
+                    @include('home.message')
+                </div>
                 <div class="col-md-6 col-sm-6">
                     <h1>{{$treatmentData->title}}</h1>
                     <div class="price-availability-block clearfix">
@@ -36,11 +39,15 @@
                     <div class="description">
                         <p>{{$treatmentData->description}}</p>
                     </div>
+                    <form action="{{route('shopcart.store')}}" method="post">
+                        @csrf
 
                     <div class="product-page-cart">
 
+                        <input type="hidden" name="treatment_id" value="{{$treatmentData->id}}">
                         <button class="btn btn-primary" type="submit">Add to cart</button>
                     </div>
+                    </form>
                     @php
                         $average = $treatmentData->comments->average('rate');
                     @endphp
@@ -136,7 +143,7 @@
                                     <a href="/login" class="btn btn-primary">For Submit Your Review, Please Login</a>
                                 @endauth
                             </form>
-                            @include('home.message')
+
                             <!-- END FORM-->
                         </div>
                     </div>

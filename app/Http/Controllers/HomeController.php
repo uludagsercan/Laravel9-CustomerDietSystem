@@ -76,6 +76,7 @@ class HomeController extends Controller
     }
     public function treatment($tid){
         $treatment = Treatment::find($tid);
+
         $images = DB::table('images')->where('treatment_id',$tid)->get();
         $reviews = Comment::where('treatment_id',$tid)->get();
         return view('home.treatment',
