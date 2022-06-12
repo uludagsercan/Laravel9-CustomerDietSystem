@@ -41,6 +41,21 @@
 
                         <button class="btn btn-primary" type="submit">Add to cart</button>
                     </div>
+                    @php
+                        $average = $treatmentData->comments->average('rate');
+                    @endphp
+
+                    <div class="review">
+
+
+                            <i style="color: orange" class="fa fa-star  @if ($average<1) fa-star-o @endif"></i>
+                            <i style="color: orange" class="fa fa-star @if ($average<2) fa-star-o @endif"></i>
+                            <i style="color: orange" class="fa fa-star @if ($average<3) fa-star-o @endif"></i>
+                            <i style="color: orange" class="fa fa-star @if ($average<4) fa-star-o @endif"></i>
+                            <i style="color: orange" class="fa fa-star @if ($average<5) fa-star-o @endif"></i>
+                         <a href="javascript:;" style="color: #0f0f0f">{{$reviews->count('id')}} / {{number_format($average,1)}} reviews</a>
+
+                    </div>
 
                     <ul class="social-icons">
                         <li><a class="facebook" data-original-title="facebook" href="javascript:;"></a></li>
@@ -64,17 +79,19 @@
 
                         <div class="tab-pane fade in active" id="Reviews">
                             <!--<p>There are no reviews for this product.</p>-->
+
                             @foreach($reviews as $rs)
                             <div class="review-item clearfix">
                                 <div class="review-item-submitted">
                                     <strong>{{$rs->user->name}}</strong>
                                     <em>{{$rs->created_at}}</em>
+
                                     <div class="review-form">
-                                        <i class="fa fa-star @if ($rs->rate<1) fa-star-o @endif"></i>
-                                        <i class="fa fa-star @if ($rs->rate<2) fa-star-o @endif"></i>
-                                        <i class="fa fa-star @if ($rs->rate<3) fa-star-o @endif"></i>
-                                        <i class="fa fa-star @if ($rs->rate<4) fa-star-o @endif"></i>
-                                        <i class="fa fa-star @if ($rs->rate<5) fa-star-o @endif"></i>
+                                        <i style="color: orange" class="fa fa-star @if ($rs->rate<1) fa-star-o @endif"></i>
+                                        <i style="color: orange" class="fa fa-star @if ($rs->rate<2) fa-star-o @endif"></i>
+                                        <i style="color: orange" class="fa fa-star @if ($rs->rate<3) fa-star-o @endif"></i>
+                                        <i style="color: orange" class="fa fa-star @if ($rs->rate<4) fa-star-o @endif"></i>
+                                        <i style="color: orange" class="fa fa-star @if ($rs->rate<5) fa-star-o @endif"></i>
                                     </div>
                                 </div>
                                 <div class="review-item-content">
