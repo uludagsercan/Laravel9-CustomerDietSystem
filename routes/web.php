@@ -20,6 +20,10 @@ use \App\Http\Controllers\AdminPanel\CategoryController;
 //  return view('welcome');
 //});
 
+Route::view('/loginuser','home.login');
+Route::view('/registeruser','home.register');
+Route::get('/logoutuser',[HomeController::class,'logout'])->name('logoutuser');
+
 Route::get('/',[HomeController::class,'index'])->name('home');
 Route::get('/treatment/{tid}',[HomeController::class,'treatment'])->name('treatment');
 Route::get('/categorytreatments/{id}/{slug}',[HomeController::class,'categorytreatments'])->name('categorytreatments');

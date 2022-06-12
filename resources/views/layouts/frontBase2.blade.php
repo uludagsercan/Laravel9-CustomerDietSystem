@@ -49,9 +49,7 @@
 </head>
 <body>
 @include('home.header')
-@section('sidebar')
-@include('home.sidebar')
-@show
+
 
 @yield('content')
 
