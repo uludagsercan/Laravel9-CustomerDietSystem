@@ -27,7 +27,7 @@
                     <tr>
                         <td>{{$rs->id}}</td>
                         <td>{{$rs->user->name}}</td>
-                        <td>{{$rs->treatment->title}}</td>
+                        <td><a href="{{route('treatment',['tid'=>$rs->treatment->id])}}">{{$rs->treatment->title}}</a></td>
                         <td>{{$rs->subject}}</td>
                         <td>{{$rs->review}}</td>
                         <td>{{$rs->rate}}</td>
