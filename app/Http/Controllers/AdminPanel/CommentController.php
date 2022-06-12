@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\AdminPanel;
 
 use App\Http\Controllers\Controller;
+use App\Models\Comment;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -15,6 +17,8 @@ class CommentController extends Controller
     public function index()
     {
         //
+        $reviews = Comment::all();
+        return view('admin.comment.index',['reviews'=>$reviews]);
     }
 
     /**
@@ -47,6 +51,8 @@ class CommentController extends Controller
     public function show($id)
     {
         //
+        $review = Comment::find($id);
+        return view('admin.comment.show',['review'=>$review]);
     }
 
     /**
@@ -70,6 +76,11 @@ class CommentController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+        $comment = Comment::find($id);
+        $comment->status = $request->status;
+        $comment->save();
+        return redirect()->route('admin.comment.show',['id'=>$id]);
     }
 
     /**
@@ -81,5 +92,8 @@ class CommentController extends Controller
     public function destroy($id)
     {
         //
+        $comment = Comment::find($id);
+        $comment->delete();
+        return redirect()->route('admin.comment.index');
     }
 }

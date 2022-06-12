@@ -68,7 +68,7 @@ class HomeController extends Controller
         $comment->subject=$request->subject;
         $comment->review = $request->review;
         $comment->IP = request()->ip();
-        $comment->product_id = $tid;
+        $comment->treatment_id = $tid;
         $comment->user_id=Auth::id();
         $comment->rate=$request->rate;
         $comment->save();
@@ -77,7 +77,7 @@ class HomeController extends Controller
     public function treatment($tid){
         $treatment = Treatment::find($tid);
         $images = DB::table('images')->where('treatment_id',$tid)->get();
-        $reviews = Comment::where('product_id',$tid)->get();
+        $reviews = Comment::where('treatment_id',$tid)->get();
         return view('home.treatment',
             [
                 'treatmentData'=>$treatment,

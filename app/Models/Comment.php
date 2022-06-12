@@ -12,5 +12,8 @@ class Comment extends Model
     function user(){
         return $this->belongsTo(User::class);
     }
+    function treatment(){
+        return $this->belongsTo(Treatment::class);
+    }
 
 }

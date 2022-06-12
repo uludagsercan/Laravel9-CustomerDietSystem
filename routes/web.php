@@ -90,8 +90,6 @@ Route::prefix('/admin')->name('admin.')->controller(AdminController::class)->gro
     });
     Route::prefix('/comment')->name('comment.')->controller(\App\Http\Controllers\AdminPanel\CommentController::class)->group(function (){
         Route::get('/','index')->name('index');
-        Route::post('/store','store')->name('store');
-        Route::get('/edit/{id}','edit')->name('edit');
         Route::post('/update/{id}','update')->name('update');
         Route::get('/show/{id}','show')->name('show');
         Route::get('/destroy/{id}','destroy')->name('destroy');
