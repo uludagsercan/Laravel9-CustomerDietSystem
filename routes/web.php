@@ -20,10 +20,10 @@ use \App\Http\Controllers\AdminPanel\CategoryController;
 //  return view('welcome');
 //});
 
-Route::view('/loginuser','home.login');
-Route::view('/registeruser','home.register');
+Route::view('/loginuser','home.login')->name('loginuser');
+Route::view('/registeruser','home.register')->name('registeruser');
 Route::get('/logoutuser',[HomeController::class,'logout'])->name('logoutuser');
-Route::view('/loginadmin','admin.login');
+Route::view('/loginadmin','admin.login')->name('loginadmin');
 Route::post('/loginadmincheck',[\App\Http\Controllers\AdminPanel\HomeController::class,'loginadmincheck'])->name('loginadmincheck');
 
 Route::get('/',[HomeController::class,'index'])->name('home');
@@ -41,7 +41,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 
-Route::prefix('/admin')->name('admin.')->controller(AdminController::class)->group(function (){
+Route::middleware('admin')->prefix('/admin')->name('admin.')->controller(AdminController::class)->group(function (){
     //-----------------Admin Panel-------------------
 
     Route::get('/','index')->name('index');
