@@ -32,7 +32,9 @@
                     @auth
                         <li><a href="shop-account.html">{{\Illuminate\Support\Facades\Auth::user()->name}}</a></li>
                     @endauth
-                    <li><a href="shop-wishlist.html">My Wishlist</a></li>
+                    @auth
+                    <li><a href="{{route('userx.index')}}">My Account</a></li>
+                        @endauth
                     <li><a href="shop-checkout.html">Checkout</a></li>
                     @auth
                         <li><a href="/logoutuser">Log out</a></li>
