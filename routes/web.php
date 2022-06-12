@@ -100,7 +100,15 @@ Route::prefix('/admin')->name('admin.')->controller(AdminController::class)->gro
         Route::get('/show/{id}','show')->name('show');
         Route::get('/destroy/{id}','destroy')->name('destroy');
     });
-
+    Route::prefix('/user')->name('user.')->controller(\App\Http\Controllers\AdminPanel\AdminUserConroller::class)->group(function (){
+        Route::get('/','index')->name('index');
+        Route::post('/update/{id}','update')->name('update');
+        Route::post('/addrole/{id}','addrole')->name('addrole');
+        Route::get('/show/{id}','show')->name('show');
+        Route::get('/edit/{id}','show')->name('show');
+        Route::get('/destroy/{id}','destroy')->name('destroy');
+        Route::get('/destroyrole/{uid}/{rid}','destroyrole')->name('destroyrole');
+    });
 });
 
 
