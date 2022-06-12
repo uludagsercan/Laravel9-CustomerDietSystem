@@ -53,9 +53,11 @@ Route::middleware('auth')->group(function (){
         Route::get('/create','create')->name('create');
         Route::post('/store','store')->name('store');
         Route::get('/edit/{id}','edit')->name('edit');
+        Route::get('/add/{id}','add')->name('add');
         Route::post('/update/{id}','update')->name('update');
         Route::get('/show/{id}','show')->name('show');
         Route::get('/destroy/{id}','destroy')->name('destroy');
+
     });
 
     Route::middleware('admin')->prefix('/admin')->name('admin.')->controller(AdminController::class)->group(function (){

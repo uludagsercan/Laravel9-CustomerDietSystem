@@ -81,7 +81,7 @@
                     </ul>
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade" id="Description">
-                            <p>{{$treatmentData->detail}}</p>
+                            {!! $treatmentData->detail !!}
                         </div>
 
                         <div class="tab-pane fade in active" id="Reviews">

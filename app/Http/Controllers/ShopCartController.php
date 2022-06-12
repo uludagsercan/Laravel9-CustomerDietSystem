@@ -11,6 +11,18 @@ class ShopCartController extends Controller
     public static function countshopcart(){
         return ShopCart::where('user_id',Auth::id())->count();
     }
+
+    public function continueshopping(){
+        return redirect()->back();
+    }
+    public static function totalPrice(){
+        $total=0;
+        $shopcartItem = ShopCart::where('user_id',Auth::id())->get();
+        foreach ($shopcartItem as $rs){
+            $total += $rs->treatment->price;
+        }
+        return $total;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -20,8 +32,9 @@ class ShopCartController extends Controller
     {
         //
         $shopcart = ShopCart::where('user_id',Auth::id())->get();
-        return view('home.user.shopcart',['data'=>$shopcart]);
+        return view('home.user.shopcart',['data'=>$shopcart,'shopCartItem'=>$shopcart]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -53,7 +66,17 @@ class ShopCartController extends Controller
         $data->save();
         return redirect()->back()->with('success','Your product added');
     }
-
+    public function add($id){
+        $data = new ShopCart();
+        $businessRule = ShopCart::where('treatment_id',$id)->where('user_id',Auth::id())->first();
+        if ($businessRule){
+            return redirect()->back()->with('error','Your product is available, Please choose another product');
+        }
+        $data->treatment_id = $id;
+        $data->user_id = Auth::id();
+        $data->save();
+        return redirect()->back()->with('success','Your product added');
+    }
     /**
      * Display the specified resource.
      *

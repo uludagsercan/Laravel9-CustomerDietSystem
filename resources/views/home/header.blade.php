@@ -1,29 +1,7 @@
 <div class="pre-header">
     <div class="container">
         <div class="row">
-            <!-- BEGIN TOP BAR LEFT PART -->
-            <div class="col-md-6 col-sm-6 additional-shop-info">
-                <ul class="list-unstyled list-inline">
-                    <li><i class="fa fa-phone"></i><span>+1 456 6717</span></li>
-                    <!-- BEGIN CURRENCIES -->
-                    <li class="shop-currencies">
-                        <a href="javascript:void(0);">€</a>
-                        <a href="javascript:void(0);">£</a>
-                        <a href="javascript:void(0);" class="current">$</a>
-                    </li>
-                    <!-- END CURRENCIES -->
-                    <!-- BEGIN LANGS -->
-                    <li class="langs-block">
-                        <a href="javascript:void(0);" class="current">English </a>
-                        <div class="langs-block-others-wrapper"><div class="langs-block-others">
-                                <a href="javascript:void(0);">French</a>
-                                <a href="javascript:void(0);">Germany</a>
-                                <a href="javascript:void(0);">Turkish</a>
-                            </div></div>
-                    </li>
-                    <!-- END LANGS -->
-                </ul>
-            </div>
+
             <!-- END TOP BAR LEFT PART -->
             <!-- BEGIN TOP BAR MENU -->
 
@@ -62,70 +40,23 @@
         <!-- BEGIN CART -->
         <div class="top-cart-block">
             <div class="top-cart-info">
-                <a href="javascript:void(0);" class="top-cart-info-count">3 items</a>
-                <a href="javascript:void(0);" class="top-cart-info-value">$1260</a>
+                <a href="javascript:void(0);" class="top-cart-info-count">{{\App\Http\Controllers\ShopCartController::countshopcart()}} items</a>
+                <a href="javascript:void(0);" class="top-cart-info-value">${{\App\Http\Controllers\ShopCartController::totalPrice()}}</a>
             </div>
             <i class="fa fa-shopping-cart"></i>
 
             <div class="top-cart-content-wrapper">
                 <div class="top-cart-content">
                     <ul class="scroller" style="height: 250px;">
+                        @foreach($shopCartItem as $rs)
                         <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
+                            <a href="shop-item.html"><img src="" alt="Rolex Classic Watch" width="37" height="34"></a>
                             <span class="cart-content-count">x 1</span>
                             <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
                             <em>$1230</em>
                             <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
                         </li>
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
-                        <li>
-                            <a href="shop-item.html"><img src="assets/pages/img/cart-img.jpg" alt="Rolex Classic Watch" width="37" height="34"></a>
-                            <span class="cart-content-count">x 1</span>
-                            <strong><a href="shop-item.html">Rolex Classic Watch</a></strong>
-                            <em>$1230</em>
-                            <a href="javascript:void(0);" class="del-goods">&nbsp;</a>
-                        </li>
+                        @endforeach
                     </ul>
                     <div class="text-right">
                         <a href="shop-shopping-cart.html" class="btn btn-default">View Cart</a>

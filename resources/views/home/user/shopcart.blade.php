@@ -48,7 +48,7 @@
                                 </td>
 
                                 <td class="del-goods-col">
-                                    <a class="del-goods" href="{{route('shopcart.destroy',['id'=>$rs->id])}};">&nbsp;</a>
+                                    <a class="del-goods" href="{{route('shopcart.index',['id'=>$rs->id])}};">&nbsp;</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -67,7 +67,7 @@
                         </ul>
                     </div>
                 </div>
-                <button class="btn btn-default" type="submit">Continue shopping <i class="fa fa-shopping-cart"></i></button>
+
                 <button class="btn btn-primary" type="submit">Checkout <i class="fa fa-check"></i></button>
             </div>
         </div>

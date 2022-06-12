@@ -48,7 +48,9 @@
     @yield("head")
 </head>
 <body>
-@include('home.header')
+@section('header')
+    @include('home.header')
+@show
 @section('sidebar')
 
 

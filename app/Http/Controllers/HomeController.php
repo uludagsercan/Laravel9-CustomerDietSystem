@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Faq;
 use App\Models\Setting;
+use App\Models\ShopCart;
 use App\Models\Treatment;
 use App\Models\Image;
 use http\Message;
@@ -23,31 +24,38 @@ class HomeController extends Controller
         $sliderData = Treatment::limit(4)->get();
         $treatmentList = Treatment::all()->take(5);
         $setting = Setting::first();
+        $shopCartItem = ShopCart::where('user_id',Auth::id())->get();
         return view('home.index',[
             'sliderData'=>$sliderData,
             'dataList'=>$treatmentList,
-            'setting'=>$setting
+            'setting'=>$setting,
+            'shopCartItem'=>$shopCartItem
         ]);
     }
     public function about(){
         $setting = Setting::first();
-        return view('home.about',['setting'=>$setting]);
+        $shopCartItem = ShopCart::where('user_id',Auth::id())->get();
+        return view('home.about',['setting'=>$setting,'shopCartItem'=>$shopCartItem]);
     }
     public function references(){
         $setting = Setting::first();
-        return view('home.references',['setting'=>$setting]);
+        $shopCartItem = ShopCart::where('user_id',Auth::id())->get();
+        return view('home.references',['setting'=>$setting,'shopCartItem'=>$shopCartItem]);
     }
     public function contact(){
         $setting = Setting::first();
-        return view('home.contact',['setting'=>$setting]);
+        $shopCartItem = ShopCart::where('user_id',Auth::id())->get();
+        return view('home.contact',['setting'=>$setting,'shopCartItem'=>$shopCartItem]);
     }
     public function faq(){
         $setting = Setting::first();
         $faqData = Faq::all();
+        $shopCartItem = ShopCart::where('user_id',Auth::id())->get();
         return view('home.faq',
             [
                 'setting'=>$setting,
-                'dataList'=>$faqData
+                'dataList'=>$faqData,
+                'shopCartItem'=>$shopCartItem
             ]);
     }
     public function messageStore(Request $request){
@@ -76,7 +84,7 @@ class HomeController extends Controller
     }
     public function treatment($tid){
         $treatment = Treatment::find($tid);
-
+        $shopCartItem = ShopCart::where('user_id',Auth::id())->get();
         $images = DB::table('images')->where('treatment_id',$tid)->get();
         $reviews = Comment::where('treatment_id',$tid)->get();
         return view('home.treatment',
@@ -84,18 +92,20 @@ class HomeController extends Controller
                 'treatmentData'=>$treatment,
                 'imagesData'=>$images,
                 'reviews'=>$reviews,
+                'shopCartItem'=>$shopCartItem
             ]);
     }
     public function categorytreatments($id,$slug){
 
-
+        $shopCartItem = ShopCart::where('user_id',Auth::id())->get();
         $category = Treatment::find($id);
         $treatments = DB::table('treatments')->where('category_id',$id)->get();
 
         return view('home.categorytreatments',
             [
                 'treatmentData'=>$treatments,
-                'category'=>$category
+                'category'=>$category,
+                'shopCartItem'=>$shopCartItem
             ]);
     }
 
