@@ -44,6 +44,8 @@ Route::middleware('auth')->group(function (){
 
     Route::prefix('userx')->name('userx.')->controller(\App\Http\Controllers\UserController::class)->group(function (){
         Route::get('/','index')->name('index');
+        Route::get('/reviews','reviews')->name('reviews');
+        Route::get('/reviewdestroy/{id}','reviewdestroy')->name('reviewdestroy');
     });
 
     Route::middleware('admin')->prefix('/admin')->name('admin.')->controller(AdminController::class)->group(function (){
